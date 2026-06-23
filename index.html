@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK | Decision Intelligence for Indian SMEs</title>
+    
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2745%27 fill=%27%2338bdf8%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-size=%2748%27 text-anchor=%27middle%27 fill=%27%230f172a%27 font-family=%27Arial%27%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] } } } };
+    </script>
+    <style>
+        :root { color-scheme: dark; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; min-height: 100vh; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; background: radial-gradient(circle at top, rgba(56,189,248,.08), transparent 22%), #020617; color: #e2e8f0; line-height: 1.75; }
+        a { text-decoration: none; color: inherit; }
+        button, input, textarea { font: inherit; }
+        .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+        .site-header { background: rgba(3, 12, 26, .92); border-bottom: 1px solid rgba(148,163,184,.12); }
+        .nav-link { color: #94a3b8; transition: color .25s ease; }
+        .nav-link:hover, .nav-link.active { color: #fff; }
+        .nav-cta { background: #38bdf8; color: #020617; font-weight: 700; }
+        .nav-cta:hover { background: #0ea5e9; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; border-radius: 999px; transition: transform .2s ease, background .2s ease; }
+        .btn:hover { transform: translateY(-1px); }
+        .btn-primary { background-color: #38bdf8; color: #020617; font-weight: 700; transition: all .25s ease; }
+        .btn-primary:hover { background-color: #0ea5e9; }
+        .btn-secondary { border: 1px solid rgba(255,255,255,.14); color: #e2e8f0; }
+        .hero-title { font-size: clamp(3.5rem, 5vw, 5.5rem); line-height: 1.02; letter-spacing: -0.04em; }
+        .hero-subtitle { color: #cbd5e1; font-size: clamp(1rem, 1.4vw, 1.3rem); max-width: 44rem; }
+        .section-title { font-size: clamp(2.4rem, 3vw, 4rem); line-height: 1.05; }
+        .section-text { color: #94a3b8; }
+        .surface-card { background: rgba(15,23,42,.88); border: 1px solid rgba(148,163,184,.1); border-radius: 1.75rem; }
+        .hero-card { position: relative; overflow: hidden; border-radius: 1.75rem; background: #091423; }
+        .hero-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(56,189,248,.14), transparent 24%), radial-gradient(circle at bottom right, rgba(14,165,233,.12), transparent 18%); pointer-events: none; }
+        .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+        .hero-card:hover .hero-img { transform: scale(1.02); }
+        .feature-card { transition: transform .3s ease, box-shadow .3s ease; }
+        .feature-card:hover { transform: translateY(-6px); box-shadow: 0 25px 80px rgba(15,23,42,.2); }
+        input, textarea { border: 1px solid rgba(148,163,184,.18); background: rgba(15,23,42,.95); color: #e2e8f0; border-radius: 1rem; outline: none; }
+        input:focus, textarea:focus { border-color: rgba(56,189,248,.8); box-shadow: 0 0 0 4px rgba(56,189,248,.08); }
+        .section-rule { width: 4rem; height: 3px; background: linear-gradient(90deg, #38bdf8, #3b82f6); border-radius: 999px; margin: 1rem auto 0; }
+    </style>
+</head>
+<body class="text-slate-100 font-sans antialiased">
+
+    <!-- Navigation -->
+<nav class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-xl text-white">
+  <div class="container mx-auto flex items-center justify-between px-6 py-4">
+    <a href="index.html" class="inline-flex items-center gap-2 text-2xl font-bold tracking-tight text-white">
+      <span class="text-sky-400">SPARK</span><span class="text-slate-300">Consulting</span>
+    </a>
+    <button id="mobile-menu-button" type="button" class="md:hidden inline-flex items-center justify-center rounded-2xl border border-white/10 bg-slate-900/80 p-3 text-slate-200 hover:bg-slate-900" aria-controls="mobile-menu" aria-expanded="false">
+      <span class="sr-only">Open menu</span>
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="anviksha.html" class="nav-link">Anviksha</a>
+      <a href="sectors.html" class="nav-link">Sectors</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+  </div>
+  <div class="md:hidden" id="mobile-menu" hidden>
+    <div class="border-t border-white/10 bg-slate-950/95 px-6 py-4 space-y-3 text-sm">
+      <a href="index.html" class="nav-link block">Home</a>
+      <a href="about.html" class="nav-link block">About</a>
+      <a href="anviksha.html" class="nav-link block">Anviksha</a>
+      <a href="sectors.html" class="nav-link block">Sectors</a>
+      <a href="contact.html" class="nav-cta block rounded-full px-5 py-2 text-center text-slate-950">Contact</a>
+    </div>
+  </div>
+</nav>
+
+
+    <!-- Hero Section -->
+    <header id="top" class="relative overflow-hidden bg-slate-950 pb-24 pt-32 hero-overlay">
+        <div class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-slate-950 to-transparent"></div>
+        <div class="container mx-auto px-6">
+            <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+                <div class="space-y-8">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-xs uppercase tracking-[0.28em] text-sky-300">Decision intelligence for Indian SMEs</span>
+                    <h1 class="max-w-3xl hero-title font-extrabold text-white text-shadow-soft">Analytics, automation and advisory fused into a single growth engine.</h1>
+                    <p class="max-w-2xl hero-subtitle text-slate-300">SPARK delivers Anviksha, a decision intelligence platform built to solve the real-world challenges of SMEs across manufacturing, retail, agri-food, technology and healthcare.</p>
+                    <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+                        <a href="anviksha.html" class="btn-primary inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-slate-900 shadow-lg">Explore Anviksha</a>
+                        <a href="contact.html" class="inline-flex items-center justify-center rounded-full border border-white/10 px-8 py-4 text-base font-semibold text-white hover:bg-white/10">Get a Free Audit</a>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-3">
+                        <div class="rounded-3xl bg-slate-900/80 p-5 text-center">
+                            <div class="text-3xl font-bold text-sky-300">28%</div>
+                            <p class="mt-2 text-sm text-slate-400">Average efficiency gain</p>
+                        </div>
+                        <div class="rounded-3xl bg-slate-900/80 p-5 text-center">
+                            <div class="text-3xl font-bold text-sky-300">15+</div>
+                            <p class="mt-2 text-sm text-slate-400">SME verticals supported</p>
+                        </div>
+                        <div class="rounded-3xl bg-slate-900/80 p-5 text-center">
+                            <div class="text-3xl font-bold text-sky-300">4.8/5</div>
+                            <p class="mt-2 text-sm text-slate-400">Client impact rating</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative rounded-[2rem] border border-white/10 bg-slate-950/80 p-4 shadow-2xl backdrop-blur-xl lg:p-6">
+                    <div class="hero-card hero-image-card h-[540px] w-full bg-slate-900/10 shadow-inner">
+                        <img src="https://images.unsplash.com/photo-1581091012184-7b9b5d6af7d4?auto=format&fit=crop&w=1280&q=80" alt="Analytics dashboard" class="h-full w-full" />
+                    </div>
+                    <div class="absolute inset-x-6 bottom-6 rounded-[1.5rem] border border-white/10 bg-slate-900/85 p-6 backdrop-blur-sm">
+                        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                            <div>
+                                <p class="text-sm uppercase tracking-[0.2em] text-sky-300">Anviksha snapshot</p>
+                                <h2 class="mt-2 text-2xl font-semibold text-white">Demand, cost and quality in one view.</h2>
+                            </div>
+                            <span class="inline-flex items-center gap-2 rounded-full bg-slate-800/90 px-4 py-2 text-sm text-slate-200"><i class="fas fa-shield-alt text-sky-300"></i> Secure & compliant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Platform Features -->
+    <section id="platform" class="bg-slate-950 py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-sky-400 uppercase tracking-[0.35em] text-sm font-semibold">Built on Anviksha</span>
+                <h2 class="mt-4 section-title font-bold text-white">A platform designed for SME speed and simplicity.</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl mx-auto">Anviksha combines machine learning, operations research and decision intelligence in a workflow that turns data into action across your business functions.</p>
+            </div>
+            <div class="grid gap-8 xl:grid-cols-3">
+                <article class="feature-card rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8">
+                    <div class="flex h-16 w-16 items-center justify-center rounded-3xl bg-sky-500/10 text-sky-300 text-2xl"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="mt-6 text-2xl font-semibold text-white">Forecasting</h3>
+                    <p class="mt-4 text-slate-400">Predict demand, inventory and cash flow with models tuned for regional demand, seasonality and supplier cycles.</p>
+                </article>
+                <article class="feature-card rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8">
+                    <div class="flex h-16 w-16 items-center justify-center rounded-3xl bg-sky-500/10 text-sky-300 text-2xl"><i class="fas fa-cogs"></i></div>
+                    <h3 class="mt-6 text-2xl font-semibold text-white">Optimization</h3>
+                    <p class="mt-4 text-slate-400">Balance production, logistics and working capital using algorithms built for low-touch execution.</p>
+                </article>
+                <article class="feature-card rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8">
+                    <div class="flex h-16 w-16 items-center justify-center rounded-3xl bg-sky-500/10 text-sky-300 text-2xl"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="mt-6 text-2xl font-semibold text-white">Decision intelligence</h3>
+                    <p class="mt-4 text-slate-400">Our output is not just numbers — it is prioritized recommendations, implementation guidance and tracked outcomes.</p>
+                </article>
+            </div>
+
+            <div class="mt-14 grid gap-8 lg:grid-cols-2">
+                <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-10 shadow-2xl">
+                    <h3 class="section-title font-bold text-white">Industry-ready modules</h3>
+                    <p class="mt-4 text-slate-400">Choose from pre-built SME modules for procurement, operations, sales and supply chain, then tailor them to your business.</p>
+                    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                        <div class="rounded-3xl bg-slate-950/90 p-6">
+                            <span class="text-3xl text-sky-300"><i class="fas fa-truck"></i></span>
+                            <p class="mt-3 text-sm text-slate-300">Logistics & distribution</p>
+                        </div>
+                        <div class="rounded-3xl bg-slate-950/90 p-6">
+                            <span class="text-3xl text-sky-300"><i class="fas fa-wallet"></i></span>
+                            <p class="mt-3 text-sm text-slate-300">Cash flow & working capital</p>
+                        </div>
+                        <div class="rounded-3xl bg-slate-950/90 p-6">
+                            <span class="text-3xl text-sky-300"><i class="fas fa-users"></i></span>
+                            <p class="mt-3 text-sm text-slate-300">Customer retention</p>
+                        </div>
+                        <div class="rounded-3xl bg-slate-950/90 p-6">
+                            <span class="text-3xl text-sky-300"><i class="fas fa-industry"></i></span>
+                            <p class="mt-3 text-sm text-slate-300">Quality & traceability</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-10 shadow-2xl">
+                    <h3 class="section-title font-bold text-white">Anviksha advantage</h3>
+                    <ul class="mt-8 space-y-5 text-slate-400">
+                        <li class="flex gap-4"><span class="text-sky-400 mt-1"><i class="fas fa-check-circle"></i></span><span>SME-friendly implementation with phased adoption and local support.</span></li>
+                        <li class="flex gap-4"><span class="text-sky-400 mt-1"><i class="fas fa-check-circle"></i></span><span>Explainable analytics and business-ready visualizations.</span></li>
+                        <li class="flex gap-4"><span class="text-sky-400 mt-1"><i class="fas fa-check-circle"></i></span><span>Secure cloud/hybrid deployment designed for Indian digital infrastructure.</span></li>
+                        <li class="flex gap-4"><span class="text-sky-400 mt-1"><i class="fas fa-check-circle"></i></span><span>Fast ROI: early wins in operations, procurement and sales planning.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Verticals -->
+    <section id="industries" class="bg-slate-100 py-24 text-slate-950">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-14">
+                <span class="text-sky-600 uppercase tracking-[0.35em] text-sm font-semibold">Sector expertise</span>
+                <h2 class="mt-4 section-title font-bold">Analytics tailored to your business vertical.</h2>
+                <p class="mt-4 text-slate-600 max-w-3xl mx-auto">We map use cases, KPIs and workflows to each industry so implementation is faster and outcomes are clearer.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button onclick="showTab(event, 'mfg')" class="tab-btn rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white">Manufacturing</button>
+                <button onclick="showTab(event, 'retail')" class="tab-btn rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900">Retail & E-commerce</button>
+                <button onclick="showTab(event, 'agri')" class="tab-btn rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900">Agri & Food</button>
+                <button onclick="showTab(event, 'it')" class="tab-btn rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900">IT & Services</button>
+                <button onclick="showTab(event, 'pharma')" class="tab-btn rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900">Healthcare & Pharma</button>
+            </div>
+            <div class="space-y-8">
+                <div id="mfg" class="tab-content rounded-[2rem] bg-white p-10 shadow-xl">
+                    <div class="grid gap-12 lg:grid-cols-2">
+                        <div>
+                            <span class="text-sky-600 uppercase tracking-[0.35em] text-xs font-semibold">Manufacturing</span>
+                            <h3 class="mt-4 text-3xl font-bold">Reduce waste and maximize throughput.</h3>
+                            <p class="mt-4 text-slate-600">Analytics for production planning, machine health, quality checks and vendor reliability for shop floors across India.</p>
+                            <ul class="mt-8 space-y-4 text-slate-700">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Demand forecasting and order planning</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Predictive maintenance and downtime reduction</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Quality analytics and batch traceability</span></li>
+                            </ul>
+                        </div>
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+                                <h4 class="text-xl font-semibold text-slate-900">OEE gains</h4>
+                                <p class="mt-3 text-slate-600">Clear visibility into performance, availability and quality metrics.</p>
+                            </div>
+                            <div class="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+                                <h4 class="text-xl font-semibold text-slate-900">Supplier scoring</h4>
+                                <p class="mt-3 text-slate-600">Rank vendors by delivery, cost volatility and quality consistency.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="retail" class="tab-content hidden rounded-[2rem] bg-white p-10 shadow-xl">
+                    <div class="grid gap-12 lg:grid-cols-2">
+                        <div>
+                            <span class="text-sky-600 uppercase tracking-[0.35em] text-xs font-semibold">Retail & E-commerce</span>
+                            <h3 class="mt-4 text-3xl font-bold">Make every inventory decision count.</h3>
+                            <p class="mt-4 text-slate-600">Insights for assortment planning, pricing, promotions and demand fulfillment across digital and offline channels.</p>
+                            <ul class="mt-8 space-y-4 text-slate-700">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Stock optimization for stores and warehouses</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Customer segmentation and loyalty uplift</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Marketplace and channel performance visibility</span></li>
+                            </ul>
+                        </div>
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+                                <h4 class="text-xl font-semibold text-slate-900">Assortment mix</h4>
+                                <p class="mt-3 text-slate-600">Prioritize SKUs with the highest contribution and turnover.</p>
+                            </div>
+                            <div class="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+                                <h4 class="text-xl font-semibold text-slate-900">Promotion ROI</h4>
+                                <p class="mt-3 text-slate-600">Track campaign performance across online and walk-in traffic.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="agri" class="tab-content hidden rounded-[2rem] bg-white p-10 shadow-xl">
+                    <div class="grid gap-12 lg:grid-cols-2">
+                        <div>
+                            <span class="text-sky-600 uppercase tracking-[0.35em] text-xs font-semibold">Agri & Food</span>
+                            <h3 class="mt-4 text-3xl font-bold">Increase yield while lowering post-harvest loss.</h3>
+                            <p class="mt-4 text-slate-600">Analytics for crop planning, quality grading, cold chain logistics and market timing.</p>
+                            <ul class="mt-8 space-y-4 text-slate-700">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Harvest and demand forecasting</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Quality segmentation and procurement planning</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Logistics planning for perishables</span></li>
+                            </ul>
+                        </div>
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+                                <h4 class="text-xl font-semibold text-slate-900">Supply resilience</h4>
+                                <p class="mt-3 text-slate-600">Map sourcing risks and prioritize alternate channels.</p>
+                            </div>
+                            <div class="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+                                <h4 class="text-xl font-semibold text-slate-900">Traceability</h4>
+                                <p class="mt-3 text-slate-600">Track quality metrics from farm to customer.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="it" class="tab-content hidden rounded-[2rem] bg-white p-10 shadow-xl">
+                    <div class="grid gap-12 lg:grid-cols-2">
+                        <div>
+                            <span class="text-sky-600 uppercase tracking-[0.35em] text-xs font-semibold">IT & Services</span>
+                            <h3 class="mt-4 text-3xl font-bold">Plan capacity, manage delivery risk and improve margins.</h3>
+                            <p class="mt-4 text-slate-600">Forecast demand, allocate resources and model project profitability with tools built for growing service firms.</p>
+                            <ul class="mt-8 space-y-4 text-slate-700">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Resource utilization and project forecasting</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Bid analytics for higher win rates</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Delivery risk and burn monitoring</span></li>
+                            </ul>
+                        </div>
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+                                <h4 class="text-xl font-semibold text-slate-900">Bench reduction</h4>
+                                <p class="mt-3 text-slate-600">Match demand with capacity in real time.</p>
+                            </div>
+                            <div class="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+                                <h4 class="text-xl font-semibold text-slate-900">Project health</h4>
+                                <p class="mt-3 text-slate-600">Early warnings on schedule, budget and scope drift.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pharma" class="tab-content hidden rounded-[2rem] bg-white p-10 shadow-xl">
+                    <div class="grid gap-12 lg:grid-cols-2">
+                        <div>
+                            <span class="text-sky-600 uppercase tracking-[0.35em] text-xs font-semibold">Healthcare & Pharma</span>
+                            <h3 class="mt-4 text-3xl font-bold">Keep supply steady, compliant and profitable.</h3>
+                            <p class="mt-4 text-slate-600">Decision support for batch planning, demand sensing and regulatory readiness in healthcare supply chains.</p>
+                            <ul class="mt-8 space-y-4 text-slate-700">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Batch planning and expiry risk</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Compliance-ready quality analytics</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Demand visibility across channels</span></li>
+                            </ul>
+                        </div>
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+                                <h4 class="text-xl font-semibold text-slate-900">Expiry control</h4>
+                                <p class="mt-3 text-slate-600">Mitigate waste and shortages in regulated inventory.</p>
+                            </div>
+                            <div class="rounded-3xl bg-slate-50 p-6 border border-slate-200">
+                                <h4 class="text-xl font-semibold text-slate-900">Channel planning</h4>
+                                <p class="mt-3 text-slate-600">Align stock with demand across pharmacies, distributors and clinics.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-10 text-center text-slate-500 italic">Every vertical is delivered with sector-specific KPIs, playbooks and implementation support.</p>
+        </div>
+    </section>
+
+    <!-- Advantage Section -->
+    <section class="bg-slate-950 py-24 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+                <div>
+                    <span class="text-sky-400 uppercase tracking-[0.35em] text-sm font-semibold">Why SPARK</span>
+                    <h2 class="mt-4 section-title font-bold">Consulting expertise with a platform-first delivery model.</h2>
+                    <p class="mt-6 max-w-3xl text-slate-400">We combine analytics engineering, domain expertise and change management so your team can adopt insights faster and realize measurable savings from month one.</p>
+                    <div class="mt-10 grid gap-5 sm:grid-cols-2">
+                        <div class="rounded-3xl bg-slate-900/80 p-6 border border-white/10">
+                            <h3 class="text-xl font-semibold text-white">Local execution</h3>
+                            <p class="mt-3 text-slate-400">Hands-on support across Indian SME ecosystems and digital infrastructure.</p>
+                        </div>
+                        <div class="rounded-3xl bg-slate-900/80 p-6 border border-white/10">
+                            <h3 class="text-xl font-semibold text-white">SME-aligned pricing</h3>
+                            <p class="mt-3 text-slate-400">Flexible offerings that match budgets and growth stages, not large enterprise contracts.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid gap-6">
+                    <div class="rounded-[2rem] bg-slate-900/80 p-10 shadow-2xl border border-white/10">
+                        <h3 class="text-3xl font-bold text-white">Translated insights</h3>
+                        <p class="mt-4 text-slate-300">We convert technical models into business actions, backed by timelines and accountability for operations, finance and leadership teams.</p>
+                        <ul class="mt-8 space-y-4 text-slate-400">
+                            <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Decision-ready dashboards for every role.</span></li>
+                            <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Weekly review cadence and KPI tracking.</span></li>
+                            <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Training for cross-functional adoption.</span></li>
+                        </ul>
+                    </div>
+                    <div class="rounded-[2rem] bg-slate-900/80 p-10 shadow-2xl border border-slate-800">
+                        <h3 class="text-3xl font-bold text-white">Sustained value</h3>
+                        <p class="mt-4 text-slate-300">We help SMEs not just build analytics, but embed them into regular business rhythm so benefits continue beyond the first project.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="bg-slate-100 py-24 text-slate-950">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-14">
+                <span class="text-sky-600 uppercase tracking-[0.35em] text-sm font-semibold">Impact stories</span>
+                <h2 class="mt-4 text-4xl font-bold">Trusted by growth-minded SMEs across India.</h2>
+            </div>
+            <div class="grid gap-8 lg:grid-cols-3">
+                <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg">
+                    <p class="text-slate-600">“With SPARK we improved plant uptime by 18% and simplified daily planning across three production lines.”</p>
+                    <div class="mt-8">
+                        <p class="font-semibold text-slate-900">Plant Head</p>
+                        <p class="text-sm text-slate-500">Industrial manufacturing, Coimbatore</p>
+                    </div>
+                </div>
+                <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg">
+                    <p class="text-slate-600">“Their analytics helped us reduce inventory carrying cost while increasing availability for our best sellers.”</p>
+                    <div class="mt-8">
+                        <p class="font-semibold text-slate-900">Retail Director</p>
+                        <p class="text-sm text-slate-500">Apparel chain, Jaipur</p>
+                    </div>
+                </div>
+                <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg">
+                    <p class="text-slate-600">“We now have a clear roadmap for scaling sales, quality and compliance across our food processing units.”</p>
+                    <div class="mt-8">
+                        <p class="font-semibold text-slate-900">Founder</p>
+                        <p class="text-sm text-slate-500">Food & beverage SME, Nashik</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <footer id="contact" class="bg-slate-950 py-24 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+                <div>
+                    <span class="text-sky-400 uppercase tracking-[0.35em] text-sm font-semibold">Ready for your next growth step?</span>
+                    <h2 class="mt-4 section-title font-bold">Book a free digital readiness assessment.</h2>
+                    <p class="mt-4 text-slate-400 max-w-2xl">We will identify the first three initiatives with the fastest path to savings and revenue uplift.</p>
+                </div>
+                <div class="rounded-[2rem] bg-slate-900/80 p-10 shadow-2xl border border-white/10">
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400">Name</label>
+                            <input type="text" placeholder="Your name" class="mt-3 w-full rounded-2xl border border-slate-700 bg-slate-950/90 px-4 py-4 text-white outline-none focus:border-sky-400" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400">Business email</label>
+                            <input type="email" placeholder="name@company.com" class="mt-3 w-full rounded-2xl border border-slate-700 bg-slate-950/90 px-4 py-4 text-white outline-none focus:border-sky-400" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400">Company / segment</label>
+                            <input type="text" placeholder="Manufacturing, Retail, Pharma..." class="mt-3 w-full rounded-2xl border border-slate-700 bg-slate-950/90 px-4 py-4 text-white outline-none focus:border-sky-400" />
+                        </div>
+                        <button type="submit" class="btn-primary w-full rounded-full px-6 py-4 text-base font-semibold text-slate-950">Request a Free Audit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-14 border-t border-white/10 pt-6 text-center text-sm text-slate-500">© 2026 SPARK Decision Intelligence Consulting · Powered by Anviksha · Designed for Indian SMEs.</div>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(event, tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-900', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-900');
+            });
+            document.getElementById(tabId).classList.remove('hidden');
+            event.currentTarget.classList.remove('bg-white', 'text-slate-900');
+            event.currentTarget.classList.add('bg-slate-900', 'text-white');
+        }
+        function activateNavLinks() {
+            var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('nav a[href]').forEach(function(link) {
+                var href = link.getAttribute('href');
+                if (href === currentPage || (href === 'index.html' && currentPage === '')) {
+                    link.classList.remove('text-slate-300');
+                    link.classList.add('bg-slate-900', 'text-white');
+                } else {
+                    link.classList.remove('bg-slate-900', 'text-white');
+                    link.classList.add('text-slate-300');
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('mfg').classList.remove('hidden');
+            if (document.querySelector('.tab-btn')) {
+                document.querySelector('.tab-btn').classList.remove('bg-white', 'text-slate-900');
+                document.querySelector('.tab-btn').classList.add('bg-slate-900', 'text-white');
+            }
+            activateNavLinks();
+        });
+    </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    activateNavLinks();
+    var mobileMenuButton = document.getElementById('mobile-menu-button');
+    var mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+        mobileMenu.hidden = expanded;
+      });
+    }
+  });
+</script> 
+</body>
+</html>
+

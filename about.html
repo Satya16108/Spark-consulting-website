@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | SPARK Consulting</title>
+    
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2745%27 fill=%27%2338bdf8%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-size=%2748%27 text-anchor=%27middle%27 fill=%27%230f172a%27 font-family=%27Arial%27%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] } } } };
+    </script>
+    <style>
+      :root { color-scheme: dark; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top, rgba(56,189,248,.08), transparent 22%), #020617; color: #e2e8f0; line-height: 1.75; }
+      a { color: inherit; text-decoration: none; }
+      button, input, textarea { font: inherit; }
+      .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+      .site-header { background: rgba(3, 12, 26, .92); border-bottom: 1px solid rgba(148,163,184,.12); }
+      .nav-link { color: #94a3b8; transition: color .25s ease; }
+      .nav-link:hover, .nav-link.active { color: #fff; }
+      .nav-cta { background: #38bdf8; color: #020617; font-weight: 700; }
+      .nav-cta:hover { background: #0ea5e9; }
+      .hero-title { font-size: clamp(3.5rem, 5vw, 5.5rem); line-height: 1.02; letter-spacing: -0.04em; }
+      .hero-subtitle { color: #cbd5e1; font-size: clamp(1rem, 1.4vw, 1.3rem); max-width: 44rem; }
+      .section-title { font-size: clamp(2.4rem, 3vw, 4rem); line-height: 1.05; }
+      .section-text { color: #94a3b8; }
+      .surface-card { background: rgba(15, 23, 42, .88); border: 1px solid rgba(148,163,184,.1); border-radius: 1.75rem; }
+      .hero-card { position: relative; overflow: hidden; border-radius: 1.75rem; background: #07111f; }
+      .hero-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(56,189,248,.14), transparent 28%), radial-gradient(circle at bottom right, rgba(14,165,233,.12), transparent 22%); pointer-events: none; }
+      .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; border-radius: 1.75rem; }
+      .hero-card:hover .hero-img { transform: scale(1.02); }
+      .feature-card { transition: transform .3s ease, box-shadow .3s ease; }
+      .feature-card:hover { transform: translateY(-6px); box-shadow: 0 25px 80px rgba(15,23,42,.2); }
+      .input-field { width: 100%; border: 1px solid rgba(148,163,184,.18); background: rgba(15,23,42,.95); color: #e2e8f0; border-radius: 1rem; padding: 1rem 1.1rem; outline: none; transition: border .2s ease, box-shadow .2s ease; }
+      .input-field:focus { border-color: rgba(56,189,248,.8); box-shadow: 0 0 0 4px rgba(56,189,248,.08); }
+      .btn-primary { background-color: #38bdf8; color: #020617; font-weight: 700; transition: all .25s ease; }
+      .btn-primary:hover { background-color: #0ea5e9; transform: translateY(-1px); }
+      .btn-secondary { border: 1px solid rgba(255,255,255,.14); color: #e2e8f0; }
+      .btn { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; border-radius: 999px; transition: transform .2s ease, background .2s ease; }
+      .btn:hover { transform: translateY(-1px); }
+      .section-rule { width: 4rem; height: 3px; background: linear-gradient(90deg,#38bdf8,#3b82f6); border-radius: 999px; margin: 1rem auto 0; }
+      img { display: block; max-width: 100%; height: auto; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Navigation -->
+<nav class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-xl text-white">
+  <div class="container mx-auto flex items-center justify-between px-6 py-4">
+    <a href="index.html" class="inline-flex items-center gap-2 text-2xl font-bold tracking-tight text-white">
+      <span class="text-sky-400">SPARK</span><span class="text-slate-300">Consulting</span>
+    </a>
+    <button id="mobile-menu-button" type="button" class="md:hidden inline-flex items-center justify-center rounded-2xl border border-white/10 bg-slate-900/80 p-3 text-slate-200 hover:bg-slate-900" aria-controls="mobile-menu" aria-expanded="false">
+      <span class="sr-only">Open menu</span>
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="anviksha.html" class="nav-link">Anviksha</a>
+      <a href="sectors.html" class="nav-link">Sectors</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+  </div>
+  <div class="md:hidden" id="mobile-menu" hidden>
+    <div class="border-t border-white/10 bg-slate-950/95 px-6 py-4 space-y-3 text-sm">
+      <a href="index.html" class="nav-link block">Home</a>
+      <a href="about.html" class="nav-link block">About</a>
+      <a href="anviksha.html" class="nav-link block">Anviksha</a>
+      <a href="sectors.html" class="nav-link block">Sectors</a>
+      <a href="contact.html" class="nav-cta block rounded-full px-5 py-2 text-center text-slate-950">Contact</a>
+    </div>
+  </div>
+</nav>
+
+
+    <main class="pt-28">
+        <section class="relative overflow-hidden bg-slate-950 pb-24 pt-24">
+            <div class="container mx-auto px-6">
+                <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+                    <div class="space-y-8">
+                        <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-xs uppercase tracking-[0.28em] text-sky-300">About SPARK</span>
+                        <h1 class="max-w-3xl hero-title font-extrabold text-white text-shadow-soft">We help Indian SMEs move from data noise to confident decisions.</h1>
+                        <p class="max-w-2xl hero-subtitle text-slate-300">SPARK is a decision intelligence consultancy that brings analytics, domain expertise and operational execution together through the Anviksha platform.</p>
+                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+                            <a href="contact.html" class="btn-primary inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-slate-950 shadow-lg">Start a conversation</a>
+                            <a href="anviksha.html" class="inline-flex items-center justify-center rounded-full border border-white/10 px-8 py-4 text-base font-semibold text-white hover:bg-white/10">Learn Anviksha</a>
+                        </div>
+                    </div>
+                    <div class="rounded-[2rem] border border-white/10 bg-slate-900/80 p-4 shadow-2xl backdrop-blur-xl lg:p-6">
+                        <div class="hero-card hero-image-card h-[520px] sm:h-[420px] w-full bg-slate-900/10 shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1527362088519-1f9d82d90e93?auto=format&fit=crop&w=1080&q=80" alt="Team collaboration" class="hero-img" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-900 py-24">
+            <div class="container mx-auto px-6">
+                <div class="grid gap-10 lg:grid-cols-3">
+                    <div class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-10 shadow-2xl">
+                        <h2 class="section-title font-bold text-white">Our mission</h2>
+                        <p class="mt-4 text-slate-400">Enable small and medium enterprises to compete on smarter strategy and execution using data-driven decision processes.</p>
+                    </div>
+                    <div class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-10 shadow-2xl">
+                        <h2 class="section-title font-bold text-white">Our approach</h2>
+                        <p class="mt-4 text-slate-400">We blend analytics, operations consulting and technology adoption so insights become actions, not just reports.</p>
+                    </div>
+                    <div class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-10 shadow-2xl">
+                        <h2 class="section-title font-bold text-white">Our promise</h2>
+                        <p class="mt-4 text-slate-400">Deliver practical solutions quickly, with measurable business value, local support and simpler pricing for SMEs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="grid gap-10 lg:grid-cols-3">
+                    <div class="rounded-[2rem] bg-white/5 p-10 shadow-2xl border border-white/10">
+                        <h3 class="text-2xl font-semibold text-white">Local execution</h3>
+                        <p class="mt-4 text-slate-300">We work with SMEs across India, providing hands-on support and practical change management.</p>
+                    </div>
+                    <div class="rounded-[2rem] bg-white/5 p-10 shadow-2xl border border-white/10">
+                        <h3 class="text-2xl font-semibold text-white">Domain experts</h3>
+                        <p class="mt-4 text-slate-300">Our team includes operations leaders, data scientists, supply chain specialists and finance professionals.</p>
+                    </div>
+                    <div class="rounded-[2rem] bg-white/5 p-10 shadow-2xl border border-white/10">
+                        <h3 class="text-2xl font-semibold text-white">Result orientation</h3>
+                        <p class="mt-4 text-slate-300">Every engagement is built around measurable outcomes such as cost savings, service improvements and revenue uplift.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-950 py-24">
+            <div class="container mx-auto px-6 text-center">
+                <span class="text-sky-400 uppercase tracking-[0.35em] text-sm font-semibold">Our values</span>
+                <div class="mt-10 grid gap-8 md:grid-cols-3">
+                    <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-10">
+                        <h4 class="text-xl font-semibold text-white">Practicality</h4>
+                        <p class="mt-3 text-slate-400">We design solutions that can be adopted quickly by operations teams.</p>
+                    </div>
+                    <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-10">
+                        <h4 class="text-xl font-semibold text-white">Transparency</h4>
+                        <p class="mt-3 text-slate-400">We explain analytics in business terms, not technical jargon.</p>
+                    </div>
+                    <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-10">
+                        <h4 class="text-xl font-semibold text-white">Sustainability</h4>
+                        <p class="mt-3 text-slate-400">Our recommendations balance efficiency with long-term resilience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-slate-950 py-10 text-center text-slate-500">
+        <div class="container mx-auto px-6">
+            © 2026 SPARK Decision Intelligence Consulting · <a href="contact.html" class="text-sky-400 hover:text-sky-300">Contact us</a>
+        </div>
+    </footer>
+<script>
+  function activateNavLinks() {
+    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('nav a[href]').forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (href === currentPage || (href === 'index.html' && currentPage === '')) {
+        link.classList.remove('text-slate-300');
+        link.classList.add('bg-slate-900', 'text-white');
+      } else {
+        link.classList.remove('bg-slate-900', 'text-white');
+        link.classList.add('text-slate-300');
+      }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    activateNavLinks();
+    var mobileMenuButton = document.getElementById('mobile-menu-button');
+    var mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+        mobileMenu.hidden = expanded;
+      });
+    }
+  });
+</script>
+</body>
+</html>
+
