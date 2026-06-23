@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK | Decision Intelligence & Anviksha Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .accent-color { color: #38bdf8; }
+        .btn-primary { background-color: #38bdf8; transition: all 0.3s; }
+        .btn-primary:hover { background-color: #0ea5e9; transform: translateY(-2px); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md text-white py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter">
+                <span class="text-sky-400">SPARK</span>.CONSULTING
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#platform" class="hover:text-sky-400">Anviksha Platform</a>
+                <a href="#industries" class="hover:text-sky-400">Industries</a>
+                <a href="#advantage" class="hover:text-sky-400">Our Advantage</a>
+                <a href="#contact" class="btn-primary px-5 py-2 rounded-full text-slate-900">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white pt-32 pb-20 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+                    Intelligence that <span class="text-sky-400">Ignites</span> Action.
+                </h1>
+                <p class="text-lg text-slate-300 mb-8 max-w-lg">
+                    We bridge the gap between raw data and smarter decisions. Powered by <b>Anviksha</b>, our AI-ML engine, we help SMEs reduce costs and optimize efficiency.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#industries" class="btn-primary px-8 py-3 rounded-lg text-slate-900 font-bold">Explore Solutions</a>
+                    <a href="#platform" class="border border-slate-500 px-8 py-3 rounded-lg font-bold hover:bg-white/10">The Platform</a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1551288049-bbda48658a7d?auto=format&fit=crop&q=80&w=800" alt="Data Analytics" class="rounded-2xl shadow-2xl">
+            </div>
+        </div>
+    </header>
+
+    <!-- Anviksha Platform Section -->
+    <section id="platform" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Powered by Anviksha™</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Our proprietary Decision Intelligence platform integrates three core pillars to transform your business operations.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 border rounded-xl hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-sky-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Machine Learning</h3>
+                    <p class="text-slate-600">Predictive modeling for demand, quality, and maintenance to stay ahead of the curve.</p>
+                </div>
+                <div class="p-8 border rounded-xl hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-calculator text-sky-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Operations Research</h3>
+                    <p class="text-slate-600">Advanced optimization algorithms for production planning and resource allocation.</p>
+                </div>
+                <div class="p-8 border rounded-xl hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-sky-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Decision Intelligence</h3>
+                    <p class="text-slate-600">Actionable insights that turn complex analytical outputs into clear business moves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Verticals (Tabs) -->
+    <section id="industries" class="py-20 bg-slate-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Vertical Specialization</h2>
+            
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button onclick="showTab('mfg')" class="tab-btn px-6 py-2 bg-white rounded-full shadow text-sm font-bold active bg-sky-600 text-white" id="defaultTab">Manufacturing</button>
+                <button onclick="showTab('retail')" class="tab-btn px-6 py-2 bg-white rounded-full shadow text-sm font-bold">Retail/E-com</button>
+                <button onclick="showTab('agri')" class="tab-btn px-6 py-2 bg-white rounded-full shadow text-sm font-bold">Agri-Food</button>
+                <button onclick="showTab('it')" class="tab-btn px-6 py-2 bg-white rounded-full shadow text-sm font-bold">IT & Tech</button>
+                <button onclick="showTab('pharma')" class="tab-btn px-6 py-2 bg-white rounded-full shadow text-sm font-bold">Healthcare/Pharma</button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="mfg" class="tab-content active">
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <h4 class="text-sky-600 font-bold uppercase text-xs mb-4">Analytics Use Cases</h4>
+                        <ul class="space-y-2 text-slate-700">
+                            <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Demand Forecasting</li>
+                            <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Predictive Maintenance</li>
+                            <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Quality Control</li>
+                            <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Supplier Risk Scoring</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-sm">
+                        <h4 class="text-sky-400 font-bold uppercase text-xs mb-4">Consulting Services</h4>
+                        <ul class="space-y-2 text-slate-300">
+                            <li>• Operational Audit (VSM Mapping)</li>
+                            <li>• KPI Framework (OEE, DIFOT)</li>
+                            <li>• Digital Readiness & ERP Advisory</li>
+                            <li>• Lean Manufacturing (5S, Kaizen)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Retail Tab (Repeated structure for brevity, just change text) -->
+            <div id="retail" class="tab-content">
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <h4 class="text-sky-600 font-bold uppercase text-xs mb-4">Analytics Use Cases</h4>
+                        <ul class="space-y-2 text-slate-700">
+                            <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Customer Segmentation</li>
+                            <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Churn Prediction</li>
+                            <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Price Elasticity Modeling</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-sm">
+                        <h4 class="text-sky-400 font-bold uppercase text-xs mb-4">Consulting Services</h4>
+                        <ul class="space-y-2 text-slate-300">
+                            <li>• Omnichannel Roadmap</li>
+                            <li>• Loyalty Program Design</li>
+                            <li>• ONDC/Marketplace Strategy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- [Add other tabs similarly: agri, it, pharma] -->
+             <p class="mt-8 text-center text-slate-500 italic">Customized frameworks available for Agri-Food, IT-Services, and Pharma sectors.</p>
+        </div>
+    </section>
+
+    <!-- Advantage Section -->
+    <section id="advantage" class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Team" class="rounded-2xl border-4 border-sky-400/20">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-6">The SPARK Advantage</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="text-sky-400 text-2xl"><i class="fas fa-users-cog"></i></div>
+                        <div>
+                            <h4 class="font-bold">Cross-functional Team</h4>
+                            <p class="text-slate-400 text-sm">10+ years expertise in Engineering, IT, Supply Chain & Analytics.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="text-sky-400 text-2xl"><i class="fas fa-hand-holding-usd"></i></div>
+                        <div>
+                            <h4 class="font-bold">SME Focused Pricing</h4>
+                            <p class="text-slate-400 text-sm">Enterprise-grade decision intelligence tailored for SME budgets.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="text-sky-400 text-2xl"><i class="fas fa-microchip"></i></div>
+                        <div>
+                            <h4 class="font-bold">Deep Tech x Real World</h4>
+                            <p class="text-slate-400 text-sm">We don't just provide code; we provide solutions for floor-level challenges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-slate-900 text-white py-16 border-t border-slate-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to ignite your growth?</h2>
+            <p class="text-slate-400 mb-8">Contact us for a free digital readiness assessment.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Enter your business email" class="bg-slate-800 border border-slate-700 px-4 py-3 rounded-lg w-full outline-none focus:border-sky-400">
+                <button class="btn-primary text-slate-900 px-6 py-3 rounded-lg font-bold">Contact Us</button>
+            </div>
+            <div class="mt-12 pt-8 border-t border-slate-800 text-slate-500 text-sm">
+                © 2023 SPARK Decision Intelligence Consulting. Powered by Anviksha Platform.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Remove active style from buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-sky-600', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-900');
+            });
+            // Show selected content
+            document.getElementById(tabId).classList.add('active');
+            // Add active style to clicked button
+            event.currentTarget.classList.remove('bg-white', 'text-slate-900');
+            event.currentTarget.classList.add('bg-sky-600', 'text-white');
+        }
+    </script>
+</body>
+</html>
