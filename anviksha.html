@@ -1,207 +1,595 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anviksha Platform | SPARK Consulting</title>
-    
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2745%27 fill=%27%2338bdf8%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-size=%2748%27 text-anchor=%27middle%27 fill=%27%230f172a%27 font-family=%27Arial%27%3ES%3C/text%3E%3C/svg%3E">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] } } } };
-    </script>
-    <style>
-      :root { color-scheme: dark; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
-      *, *::before, *::after { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top, rgba(56,189,248,.08), transparent 22%), #020617; color: #e2e8f0; line-height: 1.75; }
-      a { color: inherit; text-decoration: none; }
-      button, input, textarea { font: inherit; }
-      .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
-      .site-header { background: rgba(3, 12, 26, .92); border-bottom: 1px solid rgba(148,163,184,.12); }
-      .nav-link { color: #94a3b8; transition: color .25s ease; }
-      .nav-link:hover, .nav-link.active { color: #fff; }
-      .nav-cta { background: #38bdf8; color: #020617; font-weight: 700; }
-      .nav-cta:hover { background: #0ea5e9; }
-      .hero-title { font-size: clamp(3.5rem, 5vw, 5.5rem); line-height: 1.02; letter-spacing: -0.04em; }
-      .hero-subtitle { color: #cbd5e1; font-size: clamp(1rem, 1.4vw, 1.3rem); max-width: 44rem; }
-      .section-title { font-size: clamp(2.4rem, 3vw, 4rem); line-height: 1.05; }
-      .section-text { color: #94a3b8; }
-      .surface-card { background: rgba(15, 23, 42, .88); border: 1px solid rgba(148,163,184,.1); border-radius: 1.75rem; }
-      .hero-card { position: relative; overflow: hidden; border-radius: 1.75rem; background: #07111f; }
-      .hero-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(56,189,248,.14), transparent 28%), radial-gradient(circle at bottom right, rgba(14,165,233,.12), transparent 22%); pointer-events: none; }
-      .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; border-radius: 1.75rem; }
-      .hero-card:hover .hero-img { transform: scale(1.02); }
-      .feature-card { transition: transform .3s ease, box-shadow .3s ease; }
-      .feature-card:hover { transform: translateY(-6px); box-shadow: 0 25px 80px rgba(15,23,42,.2); }
-      .input-field { width: 100%; border: 1px solid rgba(148,163,184,.18); background: rgba(15,23,42,.95); color: #e2e8f0; border-radius: 1rem; padding: 1rem 1.1rem; outline: none; transition: border .2s ease, box-shadow .2s ease; }
-      .input-field:focus { border-color: rgba(56,189,248,.8); box-shadow: 0 0 0 4px rgba(56,189,248,.08); }
-      .btn-primary { background-color: #38bdf8; color: #020617; font-weight: 700; transition: all .25s ease; }
-      .btn-primary:hover { background-color: #0ea5e9; transform: translateY(-1px); }
-      .btn-secondary { border: 1px solid rgba(255,255,255,.14); color: #e2e8f0; }
-      .btn { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; border-radius: 999px; transition: transform .2s ease, background .2s ease; }
-      .btn:hover { transform: translateY(-1px); }
-      .section-rule { width: 4rem; height: 3px; background: linear-gradient(90deg,#38bdf8,#3b82f6); border-radius: 999px; margin: 1rem auto 0; }
-      img { display: block; max-width: 100%; height: auto; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anviksha Platform | SPARK Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#050C1A; --navy-card:#0A1628; --navy-mid:#0F1E35; --navy-light:#152440;
+      --gold:#C9A84C; --gold-light:#E2C97E; --gold-dim:rgba(201,168,76,0.12); --gold-line:rgba(201,168,76,0.3);
+      --blue-glow:#1E4D8C; --teal:#1E8A7A;
+      --text-white:#F0F4FF; --text-muted:#8A9BB8; --text-dim:#4A5E7A;
+      --ff-display:'Playfair Display',Georgia,serif;
+      --ff-body:'DM Sans',system-ui,sans-serif;
+      --ff-mono:'DM Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--navy);color:var(--text-white);font-family:var(--ff-body);line-height:1.65;overflow-x:hidden;}
+    a{text-decoration:none;color:inherit;}
+    img{display:block;max-width:100%;}
+    #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.38;}
+    .page-wrap{position:relative;z-index:1;}
+    .W{width:min(1140px,calc(100% - 48px));margin:0 auto;}
+
+    /* NAV */
+    .nav{position:fixed;inset-x:0;top:0;z-index:100;background:rgba(5,12,26,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-line);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
+    .nav-brand{display:flex;align-items:baseline;gap:2px;font-family:var(--ff-display);font-size:1.35rem;font-weight:700;letter-spacing:0.04em;}
+    .nav-brand .s{color:var(--gold);}
+    .nav-brand .tag{font-family:var(--ff-body);font-size:0.6rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-left:10px;border-left:1px solid var(--gold-line);padding-left:10px;align-self:center;}
+    .nav-links{display:flex;align-items:center;gap:4px;}
+    .nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.04em;color:var(--text-muted);padding:6px 14px;border-radius:6px;transition:color .2s,background .2s;}
+    .nav-links a:hover{color:var(--text-white);background:rgba(255,255,255,0.05);}
+    .nav-links a.active{color:var(--gold);}
+    .nav-cta{font-size:0.82rem;font-weight:600;letter-spacing:0.05em;padding:8px 20px;border-radius:6px;background:transparent;border:1px solid var(--gold);color:var(--gold);transition:background .2s,color .2s;margin-left:8px;}
+    .nav-cta:hover{background:var(--gold);color:var(--navy);}
+    .nav-burger{display:none;background:none;border:1px solid var(--gold-line);border-radius:6px;padding:8px 10px;color:var(--text-muted);cursor:pointer;}
+    @media(max-width:860px){.nav-links{display:none;}.nav-burger{display:flex;align-items:center;}.nav-brand .tag{display:none;}}
+    .nav-mobile{display:none;border-top:1px solid var(--gold-line);background:rgba(5,12,26,0.98);}
+    .nav-mobile.open{display:block;}
+    .nav-mobile a{display:block;padding:12px 28px;font-size:0.9rem;font-weight:500;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.04);}
+    .nav-mobile a:hover,.nav-mobile a.active{color:var(--gold);}
+    .nav-mobile .mob-cta{margin:16px 28px;display:block;text-align:center;background:var(--gold);color:var(--navy);font-weight:700;border-radius:6px;padding:11px;}
+
+    /* TYPOGRAPHY */
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+    .eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--gold);}
+    .sec-heading{font-family:var(--ff-display);font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:700;line-height:1.1;color:var(--text-white);letter-spacing:-0.02em;}
+    .sec-heading em{font-style:italic;color:var(--gold);}
+    .sec-sub{font-size:1rem;color:var(--text-muted);line-height:1.75;}
+    .gold-rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-line) 30%,var(--gold-line) 70%,transparent);}
+    .sec{padding:96px 0;}
+    .sec-dark{background:var(--navy-card);}
+    .sec-mid{background:var(--navy-mid);}
+
+    /* BUTTONS */
+    .btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);font-weight:700;font-size:0.88rem;letter-spacing:0.04em;padding:13px 28px;border-radius:6px;transition:background .2s,transform .15s;}
+    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+    .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text-white);font-weight:500;font-size:0.88rem;padding:13px 28px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);transition:border-color .2s,color .2s;}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+    /* PAGE HERO */
+    .page-hero{padding:140px 0 96px;position:relative;overflow:hidden;}
+    .page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-line) 30%,var(--gold-line) 70%,transparent);}
+    .hero-split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    @media(max-width:900px){.hero-split{grid-template-columns:1fr;gap:48px;}}
+    .hero-h1{font-family:var(--ff-display);font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--text-white);margin-bottom:20px;}
+    .hero-h1 em{font-style:italic;color:var(--gold);}
+
+    /* DASHBOARD MOCKUP */
+    .dash-frame{background:var(--navy-card);border:1px solid var(--gold-line);border-radius:14px;overflow:hidden;}
+    .dash-topbar{background:var(--navy-mid);border-bottom:1px solid rgba(255,255,255,0.07);padding:12px 18px;display:flex;align-items:center;gap:8px;}
+    .dash-dot{width:9px;height:9px;border-radius:50%;}
+    .dash-title{font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-left:8px;}
+    .dash-body{padding:20px 18px;}
+    .dash-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+    .dash-kpi{background:var(--navy-mid);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:14px 12px;}
+    .dash-kpi-val{font-family:var(--ff-display);font-size:1.4rem;font-weight:700;color:var(--gold);line-height:1;}
+    .dash-kpi-lbl{font-family:var(--ff-mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-top:5px;}
+    .dash-kpi-delta{font-size:0.7rem;color:#4ADE80;margin-top:3px;}
+    .dash-chart{background:var(--navy-mid);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:14px 12px;margin-bottom:10px;}
+    .dash-chart-lbl{font-family:var(--ff-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;}
+    .bar-group{display:flex;align-items:flex-end;gap:5px;height:60px;}
+    .bar{border-radius:3px 3px 0 0;flex:1;}
+    .dash-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .alert-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:12px;}
+    .alert-card .a-head{font-family:var(--ff-mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;}
+    .alert-item{display:flex;align-items:center;gap:7px;margin-bottom:6px;}
+    .a-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+    .alert-item span{font-size:0.72rem;color:var(--text-muted);}
+
+    /* HOW IT WORKS */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+    @media(max-width:860px){.steps{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:480px){.steps{grid-template-columns:1fr;}}
+    .step{padding:32px 24px;position:relative;}
+    .step::after{content:'';position:absolute;top:52px;right:0;width:1px;height:40px;background:var(--gold-line);}
+    .step:last-child::after{display:none;}
+    @media(max-width:860px){.step:nth-child(2)::after{display:none;}}
+    .step-num{font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);margin-bottom:20px;}
+    .step-icon{width:44px;height:44px;border-radius:10px;background:var(--gold-dim);border:1px solid var(--gold-line);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1rem;margin-bottom:16px;}
+    .step h3{font-size:0.95rem;font-weight:600;color:var(--text-white);margin-bottom:8px;}
+    .step p{font-size:0.82rem;color:var(--text-muted);line-height:1.65;}
+
+    /* CAPABILITIES GRID */
+    .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    @media(max-width:860px){.cap-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:520px){.cap-grid{grid-template-columns:1fr;}}
+    .cap-card{background:var(--navy-card);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:28px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s;}
+    .cap-card:hover{border-color:var(--gold-line);transform:translateY(-4px);}
+    .cap-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .25s;}
+    .cap-card:hover::before{opacity:1;}
+    .cap-icon{width:44px;height:44px;border-radius:10px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.05rem;margin-bottom:18px;}
+    .cap-card h3{font-size:1rem;font-weight:600;color:var(--text-white);margin-bottom:8px;}
+    .cap-card p{font-size:0.855rem;color:var(--text-muted);line-height:1.65;margin-bottom:14px;}
+    .cap-tag{font-family:var(--ff-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);background:var(--gold-dim);border-radius:4px;padding:3px 8px;display:inline-block;}
+
+    /* COMPARISON TABLE */
+    .comp-table{width:100%;border-collapse:collapse;border:1px solid var(--gold-line);border-radius:12px;overflow:hidden;}
+    .comp-table th{background:var(--navy-mid);padding:16px 20px;font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);text-align:left;font-weight:500;}
+    .comp-table th:first-child{width:35%;}
+    .comp-table td{padding:14px 20px;font-size:0.875rem;color:var(--text-muted);border-top:1px solid rgba(255,255,255,0.05);}
+    .comp-table td:first-child{font-weight:500;color:var(--text-white);}
+    .comp-table tr:hover td{background:rgba(255,255,255,0.02);}
+    .check-gold{color:var(--gold);}
+    .check-no{color:var(--text-dim);}
+
+    /* ARCHITECTURE */
+    .arch-row{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+    @media(max-width:900px){.arch-row{grid-template-columns:1fr;gap:40px;}}
+    .arch-layer{background:var(--navy-card);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px 24px;margin-bottom:10px;display:flex;align-items:center;gap:16px;transition:border-color .2s;}
+    .arch-layer:hover{border-color:var(--gold-line);}
+    .arch-l-icon{width:38px;height:38px;border-radius:8px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:0.9rem;flex-shrink:0;}
+    .arch-l-name{font-size:0.9rem;font-weight:600;color:var(--text-white);margin-bottom:3px;}
+    .arch-l-desc{font-size:0.78rem;color:var(--text-muted);}
+
+    /* LIVE LINK BANNER */
+    .live-banner{background:linear-gradient(90deg,rgba(201,168,76,0.08),rgba(201,168,76,0.04));border:1px solid var(--gold-line);border-radius:10px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:32px;}
+    .live-banner-left{display:flex;align-items:center;gap:12px;}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 8px #4ADE80;flex-shrink:0;animation:pulse-dot 2s infinite;}
+    @keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:0.4;}}
+    .live-banner-text{font-size:0.875rem;color:var(--text-muted);}
+    .live-banner-text strong{color:var(--text-white);font-weight:600;}
+    .btn-live{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);font-weight:700;font-size:0.82rem;letter-spacing:0.05em;padding:10px 20px;border-radius:6px;transition:background .2s,transform .15s;white-space:nowrap;}
+    .btn-live:hover{background:var(--gold-light);transform:translateY(-1px);}
+
+    /* PLATFORM SCREENSHOT SHOWCASE */
+    .showcase-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+    .sc-tab{display:flex;align-items:center;gap:8px;padding:9px 18px;border-radius:7px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,0.1);background:transparent;color:var(--text-muted);transition:all .2s;font-family:var(--ff-body);}
+    .sc-tab:hover{border-color:var(--gold-line);color:var(--text-white);}
+    .sc-tab.active{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700;}
+    .sc-tab i{font-size:0.8rem;}
+    .showcase-panel{display:none;}
+    .showcase-panel.active{display:block;}
+    .ss-frame{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--gold-line);background:var(--navy-card);}
+    .ss-topbar{background:var(--navy-mid);border-bottom:1px solid rgba(255,255,255,0.07);padding:10px 16px;display:flex;align-items:center;gap:8px;}
+    .ss-dot{width:9px;height:9px;border-radius:50%;}
+    .ss-url{font-family:var(--ff-mono);font-size:0.65rem;color:var(--text-dim);margin-left:10px;letter-spacing:0.04em;}
+    .ss-img{display:block;width:100%;height:auto;}
+    .ss-caption{padding:16px 20px;background:var(--navy-card);display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .ss-caption-left h4{font-size:0.95rem;font-weight:600;color:var(--text-white);margin-bottom:4px;}
+    .ss-caption-left p{font-size:0.82rem;color:var(--text-muted);line-height:1.6;}
+    .ss-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gold-dim);border:1px solid var(--gold-line);border-radius:6px;padding:6px 12px;font-family:var(--ff-mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+
+    /* CTA STRIP */
+    .cta-strip{background:linear-gradient(135deg,var(--navy-mid),var(--navy-card));border:1px solid var(--gold-line);border-radius:14px;padding:52px 56px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+    .cta-strip h2{font-family:var(--ff-display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;color:var(--text-white);line-height:1.2;}
+    .cta-strip h2 em{font-style:italic;color:var(--gold);}
+
+    /* FOOTER */
+    .footer{padding:40px 0 28px;border-top:1px solid rgba(255,255,255,0.06);background:var(--navy);}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .footer-brand{font-family:var(--ff-display);font-size:1.05rem;font-weight:700;letter-spacing:0.04em;}
+    .footer-brand span{color:var(--gold);}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+    .footer-links a{font-size:0.8rem;color:var(--text-dim);transition:color .2s;}
+    .footer-links a:hover{color:var(--gold);}
+    .footer-copy{font-size:0.75rem;color:var(--text-dim);margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);}
+  </style>
 </head>
-<body class="font-sans antialiased">
-    <!-- Navigation -->
-<nav class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-xl text-white">
-  <div class="container mx-auto flex items-center justify-between px-6 py-4">
-    <a href="index.html" class="inline-flex items-center gap-2 text-2xl font-bold tracking-tight text-white">
-      <span class="text-sky-400">SPARK</span><span class="text-slate-300">Consulting</span>
-    </a>
-    <button id="mobile-menu-button" type="button" class="md:hidden inline-flex items-center justify-center rounded-2xl border border-white/10 bg-slate-900/80 p-3 text-slate-200 hover:bg-slate-900" aria-controls="mobile-menu" aria-expanded="false">
-      <span class="sr-only">Open menu</span>
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="anviksha.html" class="nav-link">Anviksha</a>
-      <a href="sectors.html" class="nav-link">Sectors</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="page-wrap">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="W nav-inner">
+    <a href="index.html" class="nav-brand"><span class="s">SPARK</span>Consulting<span class="tag">Decision Intelligence</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="anviksha.html" class="active">Anviksha</a>
+      <a href="sectors.html">Sectors</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
     </div>
+    <button class="nav-burger" id="burger"><i class="fas fa-bars"></i></button>
   </div>
-  <div class="md:hidden" id="mobile-menu" hidden>
-    <div class="border-t border-white/10 bg-slate-950/95 px-6 py-4 space-y-3 text-sm">
-      <a href="index.html" class="nav-link block">Home</a>
-      <a href="about.html" class="nav-link block">About</a>
-      <a href="anviksha.html" class="nav-link block">Anviksha</a>
-      <a href="sectors.html" class="nav-link block">Sectors</a>
-      <a href="contact.html" class="nav-cta block rounded-full px-5 py-2 text-center text-slate-950">Contact</a>
-    </div>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="anviksha.html" class="active">Anviksha</a>
+    <a href="sectors.html">Sectors</a>
+    <a href="contact.html" class="mob-cta">Contact Us</a>
   </div>
 </nav>
 
-
-    <main class="pt-28">
-        <section class="relative overflow-hidden bg-slate-950 pb-24 pt-24">
-            <div class="container mx-auto px-6">
-                <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-                    <div class="space-y-8">
-                        <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-xs uppercase tracking-[0.28em] text-sky-300">Anviksha Platform</span>
-                        <h1 class="max-w-3xl hero-title font-extrabold text-white text-shadow-soft">Anviksha brings analytics, operations and decisions together.</h1>
-                        <p class="max-w-2xl hero-subtitle text-slate-300">A decision intelligence platform built for SMEs, Anviksha helps teams act on insights quickly while keeping implementation simple.</p>
-                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-                            <a href="contact.html" class="btn-primary inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-slate-950 shadow-lg">Request a demo</a>
-                            <a href="sectors.html" class="inline-flex items-center justify-center rounded-full border border-white/10 px-8 py-4 text-base font-semibold text-white hover:bg-white/10">See sectors</a>
-                        </div>
-                    </div>
-                    <div class="rounded-[2rem] border border-white/10 bg-slate-900/80 p-4 shadow-2xl backdrop-blur-xl lg:p-6">
-                        <div class="hero-card hero-image-card h-[520px] sm:h-[420px] w-full bg-slate-900/10 shadow-inner">
-                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1080&q=80" alt="Platform dashboard" class="hero-img" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-slate-900 py-24">
-            <div class="container mx-auto px-6">
-                <div class="grid gap-8 xl:grid-cols-3">
-                    <article class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                        <div class="flex h-16 w-16 items-center justify-center rounded-3xl bg-sky-500/10 text-sky-300 text-2xl"><i class="fas fa-chart-line"></i></div>
-                        <h2 class="mt-6 text-2xl font-semibold text-white">Forecasting</h2>
-                        <p class="mt-4 text-slate-400">Demand, inventory and pricing forecasts designed for SME supply chains and seasonal cycles.</p>
-                    </article>
-                    <article class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                        <div class="flex h-16 w-16 items-center justify-center rounded-3xl bg-sky-500/10 text-sky-300 text-2xl"><i class="fas fa-cogs"></i></div>
-                        <h2 class="mt-6 text-2xl font-semibold text-white">Optimization</h2>
-                        <p class="mt-4 text-slate-400">Production, logistics and resource optimization with explainable recommendations.</p>
-                    </article>
-                    <article class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                        <div class="flex h-16 w-16 items-center justify-center rounded-3xl bg-sky-500/10 text-sky-300 text-2xl"><i class="fas fa-lightbulb"></i></div>
-                        <h2 class="mt-6 text-2xl font-semibold text-white">Decision intelligence</h2>
-                        <p class="mt-4 text-slate-400">Action plans and business-ready options, not just predictive scores.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24">
-            <div class="container mx-auto px-6">
-                <div class="grid gap-10 lg:grid-cols-2">
-                    <div class="rounded-[2rem] border border-slate-200 bg-white/5 p-10 shadow-2xl">
-                        <h2 class="section-title font-bold text-white">What Anviksha does</h2>
-                        <p class="mt-4 text-slate-300">Connects data from ERP, POS, production lines and supply chains to deliver integrated insights for operations, sales and finance.</p>
-                        <ul class="mt-8 space-y-4 text-slate-400">
-                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Data integration across legacy systems</span></li>
-                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Business-oriented analytics workflows</span></li>
-                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Insight delivery with executive dashboards</span></li>
-                        </ul>
-                    </div>
-                    <div class="rounded-[2rem] border border-slate-200 bg-white/5 p-10 shadow-2xl">
-                        <h2 class="section-title font-bold text-white">Why it works</h2>
-                        <p class="mt-4 text-slate-300">Anviksha is built to reduce adoption friction and surface decisions that operations teams can act on immediately.</p>
-                        <ul class="mt-8 space-y-4 text-slate-400">
-                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Pre-configured SME templates</span></li>
-                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Explainable models with confidence tracking</span></li>
-                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-sky-400 mt-1"></i><span>Deployment that works in hybrid cloud environments</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-slate-950 py-24">
-            <div class="container mx-auto px-6 text-center">
-                <span class="text-sky-400 uppercase tracking-[0.35em] text-sm font-semibold">Platform features</span>
-                <div class="mt-10 grid gap-8 md:grid-cols-3">
-                    <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8">
-                        <h3 class="text-xl font-semibold text-white">Data connectors</h3>
-                        <p class="mt-4 text-slate-400">Connect ERP, CRM, shop floor and logistics sources with minimal setup.</p>
-                    </div>
-                    <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8">
-                        <h3 class="text-xl font-semibold text-white">Workflow builder</h3>
-                        <p class="mt-4 text-slate-400">Guided decision workflows for inventory, quality, pricing and vendor management.</p>
-                    </div>
-                    <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8">
-                        <h3 class="text-xl font-semibold text-white">Reporting</h3>
-                        <p class="mt-4 text-slate-400">Business-friendly dashboards for leadership and operational teams.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="border-t border-white/10 bg-slate-950 py-10 text-center text-slate-500">
-        <div class="container mx-auto px-6">
-            © 2026 SPARK Decision Intelligence Consulting · <a href="contact.html" class="text-sky-400 hover:text-sky-300">Contact us</a>
+<!-- HERO -->
+<section class="page-hero">
+  <div class="W">
+    <div class="hero-split">
+      <div>
+        <div class="eyebrow">Anviksha Platform</div>
+        <h1 class="hero-h1">One intelligence layer for your <em>entire business.</em></h1>
+        <p style="font-size:1.05rem;color:var(--text-muted);line-height:1.75;margin-bottom:16px;">Anviksha — Sanskrit for <em style="color:var(--gold-light);">"investigation through enquiry"</em> — is SPARK's decision intelligence platform. It connects your data, surfaces insights and guides your team to the right actions, fast.</p>
+        <p style="font-size:1rem;color:var(--text-muted);line-height:1.75;margin-bottom:32px;">Built from the ground up for Indian SMEs: phased implementation, pre-built sector playbooks, ERP-agnostic connectors and role-based dashboards your operations team will actually use.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="https://anviksha-decision-intelligence-platform.streamlit.app/" target="_blank" rel="noopener" class="btn-gold"><i class="fas fa-external-link-alt" style="font-size:.75rem;"></i> Launch Live Platform</a>
+          <a href="contact.html" class="btn-outline">Request a demo</a>
         </div>
-    </footer>
+        <div class="live-banner">
+          <div class="live-banner-left">
+            <div class="live-dot"></div>
+            <div class="live-banner-text"><strong>Anviksha is live —</strong> explore the full platform with synthetic demo data, no login required.</div>
+          </div>
+          <a href="https://anviksha-decision-intelligence-platform.streamlit.app/" target="_blank" rel="noopener" class="btn-live"><i class="fas fa-play" style="font-size:.7rem;"></i> Try it now</a>
+        </div>
+      </div>
+
+      <!-- DASHBOARD MOCKUP -->
+      <div class="dash-frame">
+        <div class="dash-topbar">
+          <div class="dash-dot" style="background:#FF5F57;"></div>
+          <div class="dash-dot" style="background:#FFBD2E;"></div>
+          <div class="dash-dot" style="background:#28C840;"></div>
+          <div class="dash-title">Anviksha · Operations Dashboard</div>
+        </div>
+        <div class="dash-body">
+          <div class="dash-row">
+            <div class="dash-kpi">
+              <div class="dash-kpi-val">₹2.4Cr</div>
+              <div class="dash-kpi-lbl">Revenue MTD</div>
+              <div class="dash-kpi-delta">↑ 14.2%</div>
+            </div>
+            <div class="dash-kpi">
+              <div class="dash-kpi-val">87%</div>
+              <div class="dash-kpi-lbl">OEE Score</div>
+              <div class="dash-kpi-delta">↑ 5.1%</div>
+            </div>
+            <div class="dash-kpi">
+              <div class="dash-kpi-val">3.2</div>
+              <div class="dash-kpi-lbl">Inventory turns</div>
+              <div class="dash-kpi-delta">↑ 0.4x</div>
+            </div>
+          </div>
+          <div class="dash-chart">
+            <div class="dash-chart-lbl">Demand forecast vs Actual · Last 7 days</div>
+            <div class="bar-group">
+              <div class="bar" style="height:70%;background:linear-gradient(180deg,var(--gold) 0%,rgba(201,168,76,0.3) 100%);"></div>
+              <div class="bar" style="height:55%;background:linear-gradient(180deg,#3B5FC0 0%,rgba(59,95,192,0.3) 100%);"></div>
+              <div class="bar" style="height:80%;background:linear-gradient(180deg,var(--gold) 0%,rgba(201,168,76,0.3) 100%);"></div>
+              <div class="bar" style="height:65%;background:linear-gradient(180deg,#3B5FC0 0%,rgba(59,95,192,0.3) 100%);"></div>
+              <div class="bar" style="height:90%;background:linear-gradient(180deg,var(--gold) 0%,rgba(201,168,76,0.3) 100%);"></div>
+              <div class="bar" style="height:75%;background:linear-gradient(180deg,#3B5FC0 0%,rgba(59,95,192,0.3) 100%);"></div>
+              <div class="bar" style="height:85%;background:linear-gradient(180deg,var(--gold) 0%,rgba(201,168,76,0.3) 100%);"></div>
+            </div>
+          </div>
+          <div class="dash-row2">
+            <div class="alert-card">
+              <div class="a-head">Active Alerts</div>
+              <div class="alert-item"><div class="a-dot" style="background:#FBBF24;"></div><span>Line 3 OEE below threshold</span></div>
+              <div class="alert-item"><div class="a-dot" style="background:#4ADE80;"></div><span>Demand forecast updated</span></div>
+              <div class="alert-item"><div class="a-dot" style="background:#F87171;"></div><span>Supplier B delivery at risk</span></div>
+            </div>
+            <div class="alert-card">
+              <div class="a-head">AI Recommendations</div>
+              <div class="alert-item"><div class="a-dot" style="background:var(--gold);"></div><span>Shift production to Line 1</span></div>
+              <div class="alert-item"><div class="a-dot" style="background:var(--gold);"></div><span>Reorder SKU-447 this week</span></div>
+              <div class="alert-item"><div class="a-dot" style="background:var(--gold);"></div><span>Review Supplier C contract</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- HOW IT WORKS -->
+<section class="sec sec-dark">
+  <div class="W">
+    <div style="text-align:center;margin-bottom:56px;">
+      <div class="eyebrow" style="justify-content:center;">How it works</div>
+      <h2 class="sec-heading" style="margin-top:14px;">From raw data to <em>board-ready decisions</em> in four steps.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">STEP 01</div>
+        <div class="step-icon"><i class="fas fa-database"></i></div>
+        <h3>Connect your data</h3>
+        <p>Anviksha pulls from ERP, POS, shop floor, CRM and logistics via 60+ pre-built connectors. Tally, SAP, Zoho, custom APIs — all supported with minimal IT effort.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 02</div>
+        <div class="step-icon"><i class="fas fa-brain"></i></div>
+        <h3>Build the intelligence layer</h3>
+        <p>Our analysts configure sector-specific models, KPI hierarchies and data quality rules. No black boxes — every model is reviewed, explained and approved with your team.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 03</div>
+        <div class="step-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Surface insights &amp; alerts</h3>
+        <p>Role-based dashboards surface the three decisions that matter most today. Live alerts, variance explanations and weekly narrative summaries pushed to your inbox.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 04</div>
+        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+        <h3>Act and measure outcomes</h3>
+        <p>Guided action workflows take the team from insight to execution. Outcome tracking closes the loop — you see exactly what the analytics delivered in rupee terms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- PLATFORM IN ACTION — REAL SCREENSHOTS -->
+<section class="sec sec-mid">
+  <div class="W">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:48px;">
+      <div>
+        <div class="eyebrow">Platform in action</div>
+        <h2 class="sec-heading" style="margin-top:14px;">Real screens. <em>Real intelligence.</em></h2>
+      </div>
+      <div>
+        <p class="sec-sub">These are live screenshots from the Anviksha platform running on synthetic demo data. Every screen you see is available in production — no mock-ups, no promises.</p>
+        <a href="https://anviksha-decision-intelligence-platform.streamlit.app/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:0.875rem;font-weight:600;color:var(--gold);letter-spacing:0.02em;">
+          <i class="fas fa-external-link-alt" style="font-size:.75rem;"></i> Open live platform
+        </a>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="showcase-tabs">
+      <button class="sc-tab active" onclick="showTab('mfg',this)"><i class="fas fa-industry"></i> Manufacturing</button>
+      <button class="sc-tab" onclick="showTab('attrition',this)"><i class="fas fa-users"></i> HR Attrition</button>
+      <button class="sc-tab" onclick="showTab('sku',this)"><i class="fas fa-boxes"></i> SKU Insights</button>
+      <button class="sc-tab" onclick="showTab('model',this)"><i class="fas fa-brain"></i> ML Model</button>
+    </div>
+
+    <!-- MANUFACTURING -->
+    <div id="tab-mfg" class="showcase-panel active">
+      <div class="ss-frame">
+        <div class="ss-topbar">
+          <div class="ss-dot" style="background:#FF5F57;"></div>
+          <div class="ss-dot" style="background:#FFBD2E;"></div>
+          <div class="ss-dot" style="background:#28C840;"></div>
+          <span class="ss-url">anviksha-decision-intelligence-platform.streamlit.app · Manufacturing · Predictive Maintenance</span>
+        </div>
+        <img src="ss-manufacturing.png" alt="Anviksha Manufacturing — Predictive Maintenance Intelligence dashboard showing fleet health scores, high-risk machines, model AUC and monthly savings" class="ss-img">
+        <div class="ss-caption">
+          <div class="ss-caption-left">
+            <h4>Manufacturing · Predictive Maintenance Intelligence</h4>
+            <p>Fleet health score, machine-level risk indicators, Random Forest classifier performance (AUC 0.994) and gauge-based health readouts for each machine in the fleet. Alerts surface which machines need immediate inspection — before they fail.</p>
+          </div>
+          <span class="ss-badge"><i class="fas fa-circle" style="font-size:.4rem;color:#4ADE80;"></i> Live in platform</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATTRITION -->
+    <div id="tab-attrition" class="showcase-panel">
+      <div class="ss-frame">
+        <div class="ss-topbar">
+          <div class="ss-dot" style="background:#FF5F57;"></div>
+          <div class="ss-dot" style="background:#FFBD2E;"></div>
+          <div class="ss-dot" style="background:#28C840;"></div>
+          <span class="ss-url">anviksha-decision-intelligence-platform.streamlit.app · HR · Employee Attrition Risk Checker</span>
+        </div>
+        <img src="ss-attrition.png" alt="Anviksha HR Attrition Risk Checker showing interactive sliders for tenure, performance, WLB, salary and manager rating with live risk score output" class="ss-img">
+        <div class="ss-caption">
+          <div class="ss-caption-left">
+            <h4>HR Analytics · Employee Attrition Risk Checker</h4>
+            <p>Interactive what-if tool — adjust tenure, performance score, work-life balance, salary and manager rating via sliders to instantly see attrition risk score, category (Low / Medium / High) and estimated replacement cost. Built for HR managers, no data science knowledge needed.</p>
+          </div>
+          <span class="ss-badge"><i class="fas fa-circle" style="font-size:.4rem;color:#4ADE80;"></i> Live in platform</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKU -->
+    <div id="tab-sku" class="showcase-panel">
+      <div class="ss-frame">
+        <div class="ss-topbar">
+          <div class="ss-dot" style="background:#FF5F57;"></div>
+          <div class="ss-dot" style="background:#FFBD2E;"></div>
+          <div class="ss-dot" style="background:#28C840;"></div>
+          <span class="ss-url">anviksha-decision-intelligence-platform.streamlit.app · Retail · SKU Action Recommendations</span>
+        </div>
+        <img src="ss-sku.png" alt="Anviksha SKU Action Recommendations showing per-product health status, daily forecast, stock days remaining and velocity vs baseline for FMCG products" class="ss-img">
+        <div class="ss-caption">
+          <div class="ss-caption-left">
+            <h4>Retail / FMCG · SKU Action Recommendations</h4>
+            <p>Per-SKU action cards showing inventory health status (Healthy / At Risk / Critical), AI-generated reorder recommendations, average daily forecast, days of stock remaining and velocity versus baseline. Gives operations teams clear, prioritised actions — not raw numbers to interpret.</p>
+          </div>
+          <span class="ss-badge"><i class="fas fa-circle" style="font-size:.4rem;color:#4ADE80;"></i> Live in platform</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODEL -->
+    <div id="tab-model" class="showcase-panel">
+      <div class="ss-frame">
+        <div class="ss-topbar">
+          <div class="ss-dot" style="background:#FF5F57;"></div>
+          <div class="ss-dot" style="background:#FFBD2E;"></div>
+          <div class="ss-dot" style="background:#28C840;"></div>
+          <span class="ss-url">anviksha-decision-intelligence-platform.streamlit.app · ML Model &amp; Predictions · Feature Importance</span>
+        </div>
+        <img src="ss-model.png" alt="Anviksha ML Model view showing Random Forest feature importance chart for batch failure drivers and confusion matrix with accuracy, AUC, precision and recall metrics" class="ss-img">
+        <div class="ss-caption">
+          <div class="ss-caption-left">
+            <h4>ML Model Transparency · Feature Importance &amp; Confusion Matrix</h4>
+            <p>Full model explainability view — horizontal bar chart of feature importance (humidity, temperature, pH variance as top drivers of batch failure), alongside a confusion matrix showing model test-set performance. Anviksha never gives you a black-box score — every prediction is explained in business terms.</p>
+          </div>
+          <span class="ss-badge"><i class="fas fa-circle" style="font-size:.4rem;color:#4ADE80;"></i> Live in platform</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FULL ACCESS CTA -->
+    <div style="margin-top:32px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;text-align:center;">
+      <span style="font-size:0.875rem;color:var(--text-dim);">These are just four of Anviksha's modules. The live platform contains Manufacturing, Retail, HR, FMCG, Pharma, Agri and IT verticals.</span>
+      <a href="https://anviksha-decision-intelligence-platform.streamlit.app/" target="_blank" rel="noopener" class="btn-live" style="margin-top:0;"><i class="fas fa-external-link-alt" style="font-size:.7rem;"></i> Explore all modules</a>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- CAPABILITIES -->
+<section class="sec">
+  <div class="W">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:52px;">
+      <div>
+        <div class="eyebrow">Platform capabilities</div>
+        <h2 class="sec-heading" style="margin-top:14px;">Everything your SME needs. <em>Nothing it doesn't.</em></h2>
+      </div>
+      <p class="sec-sub">Pre-configured for rapid deployment. SPARK consultants calibrate each module to your specific business context before go-live.</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Demand Forecasting</h3>
+        <p>Statistical and ML models tuned for Indian market dynamics, festive seasonality and regional demand patterns. Updated daily with actuals.</p>
+        <span class="cap-tag">Accuracy: 85–93%</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><i class="fas fa-boxes"></i></div>
+        <h3>Inventory Optimisation</h3>
+        <p>Dynamic safety stock, reorder points and ABC-XYZ classification. Reduces carrying cost while maintaining service levels for your top SKUs.</p>
+        <span class="cap-tag">Avg. 18% cost reduction</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><i class="fas fa-industry"></i></div>
+        <h3>Production Planning</h3>
+        <p>Capacity-aware scheduling that balances demand, machine availability, workforce and material constraints — with daily replanning capability.</p>
+        <span class="cap-tag">OEE uplift: 8–15%</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><i class="fas fa-truck"></i></div>
+        <h3>Supply Chain Visibility</h3>
+        <p>End-to-end tracking from supplier to customer with risk scoring for delivery delays, quality failures and working capital pressure.</p>
+        <span class="cap-tag">Risk alerts: real-time</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><i class="fas fa-rupee-sign"></i></div>
+        <h3>Financial Analytics</h3>
+        <p>Integrated P&amp;L, cash flow forecasting and working capital optimisation linked to operational drivers — not just accounting entries.</p>
+        <span class="cap-tag">Cash flow accuracy: 90%+</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Quality &amp; Compliance</h3>
+        <p>Batch traceability, in-process quality dashboards and compliance reporting for regulated industries including pharma, food and automotive.</p>
+        <span class="cap-tag">Audit-ready exports</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- PLATFORM ARCHITECTURE -->
+<section class="sec sec-dark">
+  <div class="W">
+    <div class="arch-row">
+      <div>
+        <div class="eyebrow">Platform architecture</div>
+        <h2 class="sec-heading" style="margin-top:14px;margin-bottom:16px;">Secure, flexible and <em>built for India.</em></h2>
+        <p class="sec-sub" style="margin-bottom:36px;">Anviksha is designed for hybrid deployment — cloud-native for scale, on-premise for data sovereignty — with all processing within Indian jurisdiction.</p>
+        <div class="arch-layer">
+          <div class="arch-l-icon"><i class="fas fa-plug"></i></div>
+          <div><div class="arch-l-name">Data ingestion layer</div><div class="arch-l-desc">60+ connectors · API, CSV, SFTP · Real-time &amp; batch</div></div>
+        </div>
+        <div class="arch-layer">
+          <div class="arch-l-icon"><i class="fas fa-cogs"></i></div>
+          <div><div class="arch-l-name">Processing &amp; modelling engine</div><div class="arch-l-desc">ML pipeline · Forecasting · Optimisation solvers</div></div>
+        </div>
+        <div class="arch-layer">
+          <div class="arch-l-icon"><i class="fas fa-tachometer-alt"></i></div>
+          <div><div class="arch-l-name">Intelligence &amp; alerting layer</div><div class="arch-l-desc">KPI monitoring · Anomaly detection · Narrative AI</div></div>
+        </div>
+        <div class="arch-layer">
+          <div class="arch-l-icon"><i class="fas fa-users"></i></div>
+          <div><div class="arch-l-name">Decision &amp; workflow layer</div><div class="arch-l-desc">Role-based dashboards · Action workflows · Outcome tracking</div></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:var(--ff-display);font-size:1.3rem;font-weight:600;color:var(--text-white);margin-bottom:24px;">Anviksha vs. Generic BI tools</h3>
+        <div style="overflow-x:auto;">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Anviksha</th>
+                <th>Generic BI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>SME sector playbooks</td><td><i class="fas fa-check check-gold"></i> Included</td><td><i class="fas fa-times check-no"></i> Build yourself</td></tr>
+              <tr><td>Prescriptive recommendations</td><td><i class="fas fa-check check-gold"></i> Action-ready</td><td><i class="fas fa-times check-no"></i> Reports only</td></tr>
+              <tr><td>ERP integration support</td><td><i class="fas fa-check check-gold"></i> Managed</td><td><i class="fas fa-times check-no"></i> DIY</td></tr>
+              <tr><td>Domain expert review</td><td><i class="fas fa-check check-gold"></i> Included</td><td><i class="fas fa-times check-no"></i> Not offered</td></tr>
+              <tr><td>Outcome tracking (₹ ROI)</td><td><i class="fas fa-check check-gold"></i> Built-in</td><td><i class="fas fa-times check-no"></i> Not tracked</td></tr>
+              <tr><td>Indian data compliance</td><td><i class="fas fa-check check-gold"></i> In-country</td><td><i class="fas fa-minus check-no"></i> Varies</td></tr>
+              <tr><td>Time to first insight</td><td><i class="fas fa-check check-gold"></i> 30 days</td><td><i class="fas fa-minus check-no"></i> 3–6 months</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- CTA -->
+<section class="sec">
+  <div class="W">
+    <div class="cta-strip">
+      <div>
+        <h2>Experience Anviksha <em>right now.</em></h2>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-top:10px;">Explore the live platform instantly with demo data — or book a 30-minute tailored session with real data from your own sector.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <a href="https://anviksha-decision-intelligence-platform.streamlit.app/" target="_blank" rel="noopener" class="btn-gold"><i class="fas fa-external-link-alt" style="font-size:.75rem;"></i> Launch Platform</a>
+        <a href="contact.html" class="btn-outline" style="white-space:nowrap;">Request a tailored demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="W">
+    <div class="footer-inner">
+      <div class="footer-brand"><span>SPARK</span>Consulting</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="anviksha.html">Anviksha</a><a href="sectors.html">Sectors</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 SPARK Decision Intelligence Consulting · Bengaluru, India · Powered by Anviksha</div>
+  </div>
+</footer>
+
+</div>
 <script>
-  function activateNavLinks() {
-    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav a[href]').forEach(function(link) {
-      var href = link.getAttribute('href');
-      if (href === currentPage || (href === 'index.html' && currentPage === '')) {
-        link.classList.remove('text-slate-300');
-        link.classList.add('bg-slate-900', 'text-white');
-      } else {
-        link.classList.remove('bg-slate-900', 'text-white');
-        link.classList.add('text-slate-300');
-      }
-    });
+  document.getElementById('burger').addEventListener('click',function(){document.getElementById('mobileNav').classList.toggle('open');});
+
+  function showTab(id, btn) {
+    document.querySelectorAll('.showcase-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sc-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
   }
-  document.addEventListener('DOMContentLoaded', function() {
-    activateNavLinks();
-    var mobileMenuButton = document.getElementById('mobile-menu-button');
-    var mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', function() {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', String(!expanded));
-        mobileMenu.hidden = expanded;
-      });
-    }
-  });
+  (function(){const c=document.getElementById('bg-canvas'),x=c.getContext('2d');let W,H,n=[];const G='rgba(201,168,76,',B='rgba(59,95,192,';function r(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}function i(){n=[];const k=Math.min(Math.floor(W*H/18000),55);for(let j=0;j<k;j++)n.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:Math.random()*1.8+0.5,g:Math.random()>.6});}function d(){x.clearRect(0,0,W,H);const m=160;for(let a=0;a<n.length;a++)for(let b=a+1;b<n.length;b++){const p=n[a],q=n[b],dx=p.x-q.x,dy=p.y-q.y,dt=Math.sqrt(dx*dx+dy*dy);if(dt<m){const al=(1-dt/m)*.22;x.strokeStyle=(p.g||q.g?G:B)+al+')';x.lineWidth=0.6;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke();}}n.forEach(p=>{x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=(p.g?G:B)+'0.7)';x.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;});requestAnimationFrame(d);}window.addEventListener('resize',()=>{r();i();});r();i();d();})();
 </script>
 </body>
 </html>
-

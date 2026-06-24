@@ -1,198 +1,327 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | SPARK Consulting</title>
-    
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2745%27 fill=%27%2338bdf8%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-size=%2748%27 text-anchor=%27middle%27 fill=%27%230f172a%27 font-family=%27Arial%27%3ES%3C/text%3E%3C/svg%3E">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] } } } };
-    </script>
-    <style>
-      :root { color-scheme: dark; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
-      *, *::before, *::after { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top, rgba(56,189,248,.08), transparent 22%), #020617; color: #e2e8f0; line-height: 1.75; }
-      a { color: inherit; text-decoration: none; }
-      button, input, textarea { font: inherit; }
-      .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
-      .site-header { background: rgba(3, 12, 26, .92); border-bottom: 1px solid rgba(148,163,184,.12); }
-      .nav-link { color: #94a3b8; transition: color .25s ease; }
-      .nav-link:hover, .nav-link.active { color: #fff; }
-      .nav-cta { background: #38bdf8; color: #020617; font-weight: 700; }
-      .nav-cta:hover { background: #0ea5e9; }
-      .hero-title { font-size: clamp(3.5rem, 5vw, 5.5rem); line-height: 1.02; letter-spacing: -0.04em; }
-      .hero-subtitle { color: #cbd5e1; font-size: clamp(1rem, 1.4vw, 1.3rem); max-width: 44rem; }
-      .section-title { font-size: clamp(2.4rem, 3vw, 4rem); line-height: 1.05; }
-      .section-text { color: #94a3b8; }
-      .surface-card { background: rgba(15, 23, 42, .88); border: 1px solid rgba(148,163,184,.1); border-radius: 1.75rem; }
-      .hero-card { position: relative; overflow: hidden; border-radius: 1.75rem; background: #07111f; }
-      .hero-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(56,189,248,.14), transparent 28%), radial-gradient(circle at bottom right, rgba(14,165,233,.12), transparent 22%); pointer-events: none; }
-      .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; border-radius: 1.75rem; }
-      .hero-card:hover .hero-img { transform: scale(1.02); }
-      .feature-card { transition: transform .3s ease, box-shadow .3s ease; }
-      .feature-card:hover { transform: translateY(-6px); box-shadow: 0 25px 80px rgba(15,23,42,.2); }
-      .input-field { width: 100%; border: 1px solid rgba(148,163,184,.18); background: rgba(15,23,42,.95); color: #e2e8f0; border-radius: 1rem; padding: 1rem 1.1rem; outline: none; transition: border .2s ease, box-shadow .2s ease; }
-      .input-field:focus { border-color: rgba(56,189,248,.8); box-shadow: 0 0 0 4px rgba(56,189,248,.08); }
-      .btn-primary { background-color: #38bdf8; color: #020617; font-weight: 700; transition: all .25s ease; }
-      .btn-primary:hover { background-color: #0ea5e9; transform: translateY(-1px); }
-      .btn-secondary { border: 1px solid rgba(255,255,255,.14); color: #e2e8f0; }
-      .btn { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; border-radius: 999px; transition: transform .2s ease, background .2s ease; }
-      .btn:hover { transform: translateY(-1px); }
-      .section-rule { width: 4rem; height: 3px; background: linear-gradient(90deg,#38bdf8,#3b82f6); border-radius: 999px; margin: 1rem auto 0; }
-      img { display: block; max-width: 100%; height: auto; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About SPARK | Decision Intelligence Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#050C1A; --navy-card:#0A1628; --navy-mid:#0F1E35; --navy-light:#152440;
+      --gold:#C9A84C; --gold-light:#E2C97E; --gold-dim:rgba(201,168,76,0.12); --gold-line:rgba(201,168,76,0.3);
+      --text-white:#F0F4FF; --text-muted:#8A9BB8; --text-dim:#4A5E7A;
+      --ff-display:'Playfair Display',Georgia,serif;
+      --ff-body:'DM Sans',system-ui,sans-serif;
+      --ff-mono:'DM Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--navy);color:var(--text-white);font-family:var(--ff-body);line-height:1.65;overflow-x:hidden;}
+    a{text-decoration:none;color:inherit;}
+    img{display:block;max-width:100%;}
+    #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.35;}
+    .page-wrap{position:relative;z-index:1;}
+    .W{width:min(1140px,calc(100% - 48px));margin:0 auto;}
+    /* NAV */
+    .nav{position:fixed;inset-x:0;top:0;z-index:100;background:rgba(5,12,26,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-line);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
+    .nav-brand{display:flex;align-items:baseline;gap:2px;font-family:var(--ff-display);font-size:1.35rem;font-weight:700;letter-spacing:0.04em;}
+    .nav-brand .s{color:var(--gold);}
+    .nav-brand .tag{font-family:var(--ff-body);font-size:0.6rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-left:10px;border-left:1px solid var(--gold-line);padding-left:10px;align-self:center;}
+    .nav-links{display:flex;align-items:center;gap:4px;}
+    .nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.04em;color:var(--text-muted);padding:6px 14px;border-radius:6px;transition:color .2s,background .2s;}
+    .nav-links a:hover{color:var(--text-white);background:rgba(255,255,255,0.05);}
+    .nav-links a.active{color:var(--gold);}
+    .nav-cta{font-size:0.82rem;font-weight:600;letter-spacing:0.05em;padding:8px 20px;border-radius:6px;background:transparent;border:1px solid var(--gold);color:var(--gold);transition:background .2s,color .2s;margin-left:8px;}
+    .nav-cta:hover{background:var(--gold);color:var(--navy);}
+    .nav-burger{display:none;background:none;border:1px solid var(--gold-line);border-radius:6px;padding:8px 10px;color:var(--text-muted);cursor:pointer;}
+    @media(max-width:860px){.nav-links{display:none;}.nav-burger{display:flex;align-items:center;}.nav-brand .tag{display:none;}}
+    .nav-mobile{display:none;border-top:1px solid var(--gold-line);background:rgba(5,12,26,0.98);}
+    .nav-mobile.open{display:block;}
+    .nav-mobile a{display:block;padding:12px 28px;font-size:0.9rem;font-weight:500;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.04);}
+    .nav-mobile a:hover,.nav-mobile a.active{color:var(--gold);}
+    .nav-mobile .mob-cta{margin:16px 28px;display:block;text-align:center;background:var(--gold);color:var(--navy);font-weight:700;border-radius:6px;padding:11px;}
+    /* TYPOGRAPHY */
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+    .eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--gold);}
+    .sec-heading{font-family:var(--ff-display);font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:700;line-height:1.1;color:var(--text-white);letter-spacing:-0.02em;}
+    .sec-heading em{font-style:italic;color:var(--gold);}
+    .sec-sub{font-size:1rem;color:var(--text-muted);line-height:1.75;}
+    /* LAYOUT */
+    .gold-rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-line) 30%,var(--gold-line) 70%,transparent);}
+    .sec{padding:96px 0;}
+    .sec-dark{background:var(--navy-card);}
+    .sec-mid{background:var(--navy-mid);}
+    /* BUTTONS */
+    .btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);font-weight:700;font-size:0.88rem;letter-spacing:0.04em;padding:13px 28px;border-radius:6px;transition:background .2s,transform .15s;}
+    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+    .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text-white);font-weight:500;font-size:0.88rem;padding:13px 28px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);transition:border-color .2s,color .2s;}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+    /* PAGE HERO */
+    .page-hero{padding:140px 0 80px;background:linear-gradient(135deg, var(--navy) 60%, var(--navy-mid) 100%);position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.05) 0%,transparent 70%);pointer-events:none;}
+    .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:80px;align-items:center;}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px;}}
+    .hero-h1{font-family:var(--ff-display);font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--text-white);margin-bottom:22px;}
+    .hero-h1 em{font-style:italic;color:var(--gold);}
+    .hero-p{font-size:1.05rem;color:var(--text-muted);line-height:1.75;margin-bottom:32px;}
+    .hero-img-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--gold-line);position:relative;}
+    .hero-img-wrap img{width:100%;aspect-ratio:4/3;max-height:400px;object-fit:cover;filter:brightness(0.72) saturate(0.7);}
+    .hero-img-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(5,12,26,0.92) 0%,transparent 100%);padding:28px 24px 22px;}
+    .hero-img-cap p{font-family:var(--ff-mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+    .hero-img-cap span{font-size:0.9rem;color:var(--text-muted);}
+    /* MISSION TRIO */
+    .trio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold-line);border:1px solid var(--gold-line);border-radius:12px;overflow:hidden;}
+    @media(max-width:760px){.trio-grid{grid-template-columns:1fr;}}
+    .trio-cell{background:var(--navy-card);padding:36px 30px;}
+    .trio-num{font-family:var(--ff-display);font-size:3rem;font-weight:700;color:var(--gold);opacity:0.35;line-height:1;margin-bottom:14px;}
+    .trio-title{font-family:var(--ff-display);font-size:1.25rem;font-weight:600;color:var(--text-white);margin-bottom:10px;}
+    .trio-cell p{font-size:0.875rem;color:var(--text-muted);line-height:1.7;}
+    /* SPLIT SECTION */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    @media(max-width:900px){.split{grid-template-columns:1fr;gap:40px;}}
+    /* VALUE CARDS */
+    .vcard-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px;}
+    @media(max-width:560px){.vcard-grid{grid-template-columns:1fr;}}
+    .vcard{background:var(--navy-card);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:22px 20px;}
+    .vcard-icon{font-size:1rem;color:var(--gold);margin-bottom:12px;}
+    .vcard h4{font-size:0.95rem;font-weight:600;color:var(--text-white);margin-bottom:6px;}
+    .vcard p{font-size:0.82rem;color:var(--text-muted);line-height:1.6;}
+    /* TEAM SECTION */
+    .team-aside{background:var(--navy-card);border:1px solid var(--gold-line);border-radius:12px;padding:36px;}
+    .team-aside h3{font-family:var(--ff-display);font-size:1.4rem;font-weight:600;color:var(--text-white);margin-bottom:14px;}
+    .team-aside p{font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:20px;}
+    .team-skill{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .team-skill:last-child{border-bottom:none;}
+    .skill-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+    .team-skill span{font-size:0.875rem;color:var(--text-muted);}
+    /* VALUES */
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    @media(max-width:760px){.values-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.values-grid{grid-template-columns:1fr;}}
+    .value-item{border-top:2px solid var(--gold);padding:24px 0 0;}
+    .value-item h4{font-family:var(--ff-display);font-size:1.15rem;font-weight:600;color:var(--text-white);margin-bottom:8px;}
+    .value-item p{font-size:0.855rem;color:var(--text-muted);line-height:1.65;}
+    /* CTA STRIP */
+    .cta-strip{background:linear-gradient(135deg,var(--navy-mid),var(--navy-card));border:1px solid var(--gold-line);border-radius:14px;padding:52px 56px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+    .cta-strip h2{font-family:var(--ff-display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;color:var(--text-white);line-height:1.2;}
+    .cta-strip h2 em{font-style:italic;color:var(--gold);}
+    /* FOOTER */
+    .footer{padding:40px 0 28px;border-top:1px solid rgba(255,255,255,0.06);background:var(--navy);}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .footer-brand{font-family:var(--ff-display);font-size:1.05rem;font-weight:700;letter-spacing:0.04em;}
+    .footer-brand span{color:var(--gold);}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+    .footer-links a{font-size:0.8rem;color:var(--text-dim);transition:color .2s;}
+    .footer-links a:hover{color:var(--gold);}
+    .footer-copy{font-size:0.75rem;color:var(--text-dim);margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);}
+  </style>
 </head>
-<body class="font-sans antialiased">
-    <!-- Navigation -->
-<nav class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-xl text-white">
-  <div class="container mx-auto flex items-center justify-between px-6 py-4">
-    <a href="index.html" class="inline-flex items-center gap-2 text-2xl font-bold tracking-tight text-white">
-      <span class="text-sky-400">SPARK</span><span class="text-slate-300">Consulting</span>
-    </a>
-    <button id="mobile-menu-button" type="button" class="md:hidden inline-flex items-center justify-center rounded-2xl border border-white/10 bg-slate-900/80 p-3 text-slate-200 hover:bg-slate-900" aria-controls="mobile-menu" aria-expanded="false">
-      <span class="sr-only">Open menu</span>
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="anviksha.html" class="nav-link">Anviksha</a>
-      <a href="sectors.html" class="nav-link">Sectors</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="page-wrap">
+
+<nav class="nav">
+  <div class="W nav-inner">
+    <a href="index.html" class="nav-brand"><span class="s">SPARK</span>Consulting<span class="tag">Decision Intelligence</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="anviksha.html">Anviksha</a>
+      <a href="sectors.html">Sectors</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
     </div>
+    <button class="nav-burger" id="burger"><i class="fas fa-bars"></i></button>
   </div>
-  <div class="md:hidden" id="mobile-menu" hidden>
-    <div class="border-t border-white/10 bg-slate-950/95 px-6 py-4 space-y-3 text-sm">
-      <a href="index.html" class="nav-link block">Home</a>
-      <a href="about.html" class="nav-link block">About</a>
-      <a href="anviksha.html" class="nav-link block">Anviksha</a>
-      <a href="sectors.html" class="nav-link block">Sectors</a>
-      <a href="contact.html" class="nav-cta block rounded-full px-5 py-2 text-center text-slate-950">Contact</a>
-    </div>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="anviksha.html">Anviksha</a>
+    <a href="sectors.html">Sectors</a>
+    <a href="contact.html" class="mob-cta">Contact Us</a>
   </div>
 </nav>
 
-
-    <main class="pt-28">
-        <section class="relative overflow-hidden bg-slate-950 pb-24 pt-24">
-            <div class="container mx-auto px-6">
-                <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
-                    <div class="space-y-8">
-                        <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-xs uppercase tracking-[0.28em] text-sky-300">About SPARK</span>
-                        <h1 class="max-w-3xl hero-title font-extrabold text-white text-shadow-soft">We help Indian SMEs move from data noise to confident decisions.</h1>
-                        <p class="max-w-2xl hero-subtitle text-slate-300">SPARK is a decision intelligence consultancy that brings analytics, domain expertise and operational execution together through the Anviksha platform.</p>
-                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-                            <a href="contact.html" class="btn-primary inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-slate-950 shadow-lg">Start a conversation</a>
-                            <a href="anviksha.html" class="inline-flex items-center justify-center rounded-full border border-white/10 px-8 py-4 text-base font-semibold text-white hover:bg-white/10">Learn Anviksha</a>
-                        </div>
-                    </div>
-                    <div class="rounded-[2rem] border border-white/10 bg-slate-900/80 p-4 shadow-2xl backdrop-blur-xl lg:p-6">
-                        <div class="hero-card hero-image-card h-[520px] sm:h-[420px] w-full bg-slate-900/10 shadow-inner">
-                            <img src="https://images.unsplash.com/photo-1527362088519-1f9d82d90e93?auto=format&fit=crop&w=1080&q=80" alt="Team collaboration" class="hero-img" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-slate-900 py-24">
-            <div class="container mx-auto px-6">
-                <div class="grid gap-10 lg:grid-cols-3">
-                    <div class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-10 shadow-2xl">
-                        <h2 class="section-title font-bold text-white">Our mission</h2>
-                        <p class="mt-4 text-slate-400">Enable small and medium enterprises to compete on smarter strategy and execution using data-driven decision processes.</p>
-                    </div>
-                    <div class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-10 shadow-2xl">
-                        <h2 class="section-title font-bold text-white">Our approach</h2>
-                        <p class="mt-4 text-slate-400">We blend analytics, operations consulting and technology adoption so insights become actions, not just reports.</p>
-                    </div>
-                    <div class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-10 shadow-2xl">
-                        <h2 class="section-title font-bold text-white">Our promise</h2>
-                        <p class="mt-4 text-slate-400">Deliver practical solutions quickly, with measurable business value, local support and simpler pricing for SMEs.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24">
-            <div class="container mx-auto px-6">
-                <div class="grid gap-10 lg:grid-cols-3">
-                    <div class="rounded-[2rem] bg-white/5 p-10 shadow-2xl border border-white/10">
-                        <h3 class="text-2xl font-semibold text-white">Local execution</h3>
-                        <p class="mt-4 text-slate-300">We work with SMEs across India, providing hands-on support and practical change management.</p>
-                    </div>
-                    <div class="rounded-[2rem] bg-white/5 p-10 shadow-2xl border border-white/10">
-                        <h3 class="text-2xl font-semibold text-white">Domain experts</h3>
-                        <p class="mt-4 text-slate-300">Our team includes operations leaders, data scientists, supply chain specialists and finance professionals.</p>
-                    </div>
-                    <div class="rounded-[2rem] bg-white/5 p-10 shadow-2xl border border-white/10">
-                        <h3 class="text-2xl font-semibold text-white">Result orientation</h3>
-                        <p class="mt-4 text-slate-300">Every engagement is built around measurable outcomes such as cost savings, service improvements and revenue uplift.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-slate-950 py-24">
-            <div class="container mx-auto px-6 text-center">
-                <span class="text-sky-400 uppercase tracking-[0.35em] text-sm font-semibold">Our values</span>
-                <div class="mt-10 grid gap-8 md:grid-cols-3">
-                    <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-10">
-                        <h4 class="text-xl font-semibold text-white">Practicality</h4>
-                        <p class="mt-3 text-slate-400">We design solutions that can be adopted quickly by operations teams.</p>
-                    </div>
-                    <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-10">
-                        <h4 class="text-xl font-semibold text-white">Transparency</h4>
-                        <p class="mt-3 text-slate-400">We explain analytics in business terms, not technical jargon.</p>
-                    </div>
-                    <div class="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-10">
-                        <h4 class="text-xl font-semibold text-white">Sustainability</h4>
-                        <p class="mt-3 text-slate-400">Our recommendations balance efficiency with long-term resilience.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="border-t border-white/10 bg-slate-950 py-10 text-center text-slate-500">
-        <div class="container mx-auto px-6">
-            © 2026 SPARK Decision Intelligence Consulting · <a href="contact.html" class="text-sky-400 hover:text-sky-300">Contact us</a>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="W">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">About SPARK</div>
+        <h1 class="hero-h1">We turn data noise into <em>confident decisions</em> for Indian SMEs.</h1>
+        <p class="hero-p">SPARK is a decision intelligence consultancy that bridges the gap between raw data and real business action. We combine analytics engineering, domain expertise and hands-on execution through our Anviksha platform.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="contact.html" class="btn-gold">Start a conversation</a>
+          <a href="anviksha.html" class="btn-outline">Explore Anviksha</a>
         </div>
-    </footer>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=800&q=85" alt="SPARK consulting team" />
+        <div class="hero-img-cap">
+          <p>Bengaluru · India</p>
+          <span>Serving SMEs across 15+ cities</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- MISSION / APPROACH / PROMISE -->
+<section class="sec sec-dark">
+  <div class="W">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="eyebrow" style="justify-content:center;">Our foundations</div>
+      <h2 class="sec-heading" style="margin-top:14px;">Built on three <em>uncompromising</em> principles.</h2>
+    </div>
+    <div class="trio-grid">
+      <div class="trio-cell">
+        <div class="trio-num">01</div>
+        <div class="trio-title">Our Mission</div>
+        <p>Enable small and medium enterprises across India to compete on smarter strategy and execution using data-driven decision processes that are practical, affordable and fast to adopt.</p>
+      </div>
+      <div class="trio-cell">
+        <div class="trio-num">02</div>
+        <div class="trio-title">Our Approach</div>
+        <p>We blend analytics engineering, operations consulting and technology adoption. Insights become actions, not just reports. Every model is backed by a business workflow and a measure of success.</p>
+      </div>
+      <div class="trio-cell">
+        <div class="trio-num">03</div>
+        <div class="trio-title">Our Promise</div>
+        <p>Deliver practical solutions with measurable business value, local support and transparent pricing. Early wins in 90 days or less — we stake our engagement model on it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- WHO WE ARE SPLIT -->
+<section class="sec">
+  <div class="W">
+    <div class="split">
+      <div>
+        <div class="eyebrow">Who we are</div>
+        <h2 class="sec-heading" style="margin-bottom:16px;">Operators and <em>analysts</em> — in one team.</h2>
+        <p class="sec-sub" style="margin-bottom:24px;">SPARK was built by professionals who have lived inside Indian SMEs — managing production floors, running supply chains and sitting in finance reviews. We understand that analytics only matter when they change a decision that actually gets made.</p>
+        <p class="sec-sub">That operational grounding is what makes Anviksha different from generic BI tools and what makes SPARK different from pure data science consultancies.</p>
+        <div class="vcard-grid">
+          <div class="vcard">
+            <div class="vcard-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <h4>Local execution</h4>
+            <p>Hands-on support aligned with Indian operating rhythms and ERP realities.</p>
+          </div>
+          <div class="vcard">
+            <div class="vcard-icon"><i class="fas fa-users"></i></div>
+            <h4>Domain experts</h4>
+            <p>Operations, supply chain, finance and data science — in one engagement team.</p>
+          </div>
+          <div class="vcard">
+            <div class="vcard-icon"><i class="fas fa-bullseye"></i></div>
+            <h4>Outcome-focused</h4>
+            <p>Scoped to measurable results — savings, service levels and revenue uplift.</p>
+          </div>
+          <div class="vcard">
+            <div class="vcard-icon"><i class="fas fa-rupee-sign"></i></div>
+            <h4>SME-aligned pricing</h4>
+            <p>Phased investments with clear ROI gates — no enterprise lock-in contracts.</p>
+          </div>
+        </div>
+      </div>
+      <div class="team-aside">
+        <h3>Expertise in your corner</h3>
+        <p>Every engagement draws from a multidisciplinary team — not a single generalist consultant.</p>
+        <div class="team-skill"><div class="skill-dot"></div><span>Operations research &amp; supply chain analytics</span></div>
+        <div class="team-skill"><div class="skill-dot"></div><span>Machine learning &amp; statistical forecasting</span></div>
+        <div class="team-skill"><div class="skill-dot"></div><span>Financial modelling &amp; CFO advisory</span></div>
+        <div class="team-skill"><div class="skill-dot"></div><span>ERP integration &amp; data engineering</span></div>
+        <div class="team-skill"><div class="skill-dot"></div><span>Change management &amp; adoption coaching</span></div>
+        <div class="team-skill"><div class="skill-dot"></div><span>Manufacturing &amp; quality systems</span></div>
+        <div class="team-skill"><div class="skill-dot"></div><span>Retail planning &amp; category management</span></div>
+        <div class="team-skill"><div class="skill-dot"></div><span>Regulatory compliance &amp; pharma analytics</span></div>
+        <div style="margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.06);">
+          <div style="font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;">Based in</div>
+          <div style="font-size:0.9rem;color:var(--text-muted);">Bengaluru, Karnataka<br><span style="font-size:0.8rem;color:var(--text-dim);">Serving SMEs across India</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- VALUES -->
+<section class="sec sec-mid">
+  <div class="W">
+    <div style="margin-bottom:52px;">
+      <div class="eyebrow">Our values</div>
+      <h2 class="sec-heading" style="margin-top:14px;max-width:28rem;">The principles behind <em>every engagement.</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-item">
+        <h4>Practicality</h4>
+        <p>We design solutions that operations teams can adopt in days, not quarters. Complexity is our problem to solve before delivery.</p>
+      </div>
+      <div class="value-item">
+        <h4>Transparency</h4>
+        <p>We explain analytics in plain business language. No black-box models, no jargon-heavy reports that nobody acts on.</p>
+      </div>
+      <div class="value-item">
+        <h4>Sustainability</h4>
+        <p>Recommendations balance efficiency today with resilience tomorrow. Gains should compound beyond the first engagement.</p>
+      </div>
+      <div class="value-item">
+        <h4>Accountability</h4>
+        <p>We put measurable outcomes in the statement of work and we hold ourselves to them. If it can't be measured, it won't be proposed.</p>
+      </div>
+      <div class="value-item">
+        <h4>Local grounding</h4>
+        <p>We build with Indian data realities in mind — mixed-quality inputs, legacy ERP systems and SME team structures.</p>
+      </div>
+      <div class="value-item">
+        <h4>Partnership</h4>
+        <p>We work alongside your team, not above them. The goal is to build internal capability, not dependency on SPARK.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- CTA STRIP -->
+<section class="sec">
+  <div class="W">
+    <div class="cta-strip">
+      <div>
+        <h2>Ready to meet the team?<br><em>Let's start with your challenge.</em></h2>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-top:10px;">Book a free 45-minute discovery call with a senior SPARK consultant.</p>
+      </div>
+      <a href="contact.html" class="btn-gold" style="white-space:nowrap;">Book a free call <i class="fas fa-arrow-right" style="font-size:.75rem;"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="W">
+    <div class="footer-inner">
+      <div class="footer-brand"><span>SPARK</span>Consulting</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="anviksha.html">Anviksha</a><a href="sectors.html">Sectors</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 SPARK Decision Intelligence Consulting · Bengaluru, India</div>
+  </div>
+</footer>
+
+</div>
 <script>
-  function activateNavLinks() {
-    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav a[href]').forEach(function(link) {
-      var href = link.getAttribute('href');
-      if (href === currentPage || (href === 'index.html' && currentPage === '')) {
-        link.classList.remove('text-slate-300');
-        link.classList.add('bg-slate-900', 'text-white');
-      } else {
-        link.classList.remove('bg-slate-900', 'text-white');
-        link.classList.add('text-slate-300');
-      }
-    });
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    activateNavLinks();
-    var mobileMenuButton = document.getElementById('mobile-menu-button');
-    var mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', function() {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', String(!expanded));
-        mobileMenu.hidden = expanded;
-      });
-    }
-  });
+  document.getElementById('burger').addEventListener('click',function(){document.getElementById('mobileNav').classList.toggle('open');});
+  (function(){const c=document.getElementById('bg-canvas'),x=c.getContext('2d');let W,H,n=[];const G='rgba(201,168,76,',B='rgba(59,95,192,';function r(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}function i(){n=[];const k=Math.min(Math.floor(W*H/22000),45);for(let j=0;j<k;j++)n.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.6+0.5,g:Math.random()>.65});}function d(){x.clearRect(0,0,W,H);const m=150;for(let a=0;a<n.length;a++)for(let b=a+1;b<n.length;b++){const p=n[a],q=n[b],dx=p.x-q.x,dy=p.y-q.y,dt=Math.sqrt(dx*dx+dy*dy);if(dt<m){const al=(1-dt/m)*.2;x.strokeStyle=(p.g||q.g?G:B)+al+')';x.lineWidth=0.5;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke();}}n.forEach(p=>{x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=(p.g?G:B)+'0.65)';x.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;});requestAnimationFrame(d);}window.addEventListener('resize',()=>{r();i();});r();i();d();})();
 </script>
 </body>
 </html>
-

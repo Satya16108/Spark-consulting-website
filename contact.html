@@ -1,180 +1,491 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | SPARK Consulting</title>
-    
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2745%27 fill=%27%2338bdf8%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-size=%2748%27 text-anchor=%27middle%27 fill=%27%230f172a%27 font-family=%27Arial%27%3ES%3C/text%3E%3C/svg%3E">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] } } } };
-    </script>
-    <style>
-      :root { color-scheme: dark; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
-      *, *::before, *::after { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top, rgba(56,189,248,.08), transparent 22%), #020617; color: #e2e8f0; line-height: 1.75; }
-      a { color: inherit; text-decoration: none; }
-      button, input, textarea { font: inherit; }
-      .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
-      .site-header { background: rgba(3, 12, 26, .92); border-bottom: 1px solid rgba(148,163,184,.12); }
-      .nav-link { color: #94a3b8; transition: color .25s ease; }
-      .nav-link:hover, .nav-link.active { color: #fff; }
-      .nav-cta { background: #38bdf8; color: #020617; font-weight: 700; }
-      .nav-cta:hover { background: #0ea5e9; }
-      .hero-title { font-size: clamp(3.5rem, 5vw, 5.5rem); line-height: 1.02; letter-spacing: -0.04em; }
-      .hero-subtitle { color: #cbd5e1; font-size: clamp(1rem, 1.4vw, 1.3rem); max-width: 44rem; }
-      .section-title { font-size: clamp(2.4rem, 3vw, 4rem); line-height: 1.05; }
-      .section-text { color: #94a3b8; }
-      .surface-card { background: rgba(15, 23, 42, .88); border: 1px solid rgba(148,163,184,.1); border-radius: 1.75rem; }
-      .hero-card { position: relative; overflow: hidden; border-radius: 1.75rem; background: #07111f; }
-      .hero-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(56,189,248,.14), transparent 28%), radial-gradient(circle at bottom right, rgba(14,165,233,.12), transparent 22%); pointer-events: none; }
-      .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; border-radius: 1.75rem; }
-      .hero-card:hover .hero-img { transform: scale(1.02); }
-      .feature-card { transition: transform .3s ease, box-shadow .3s ease; }
-      .feature-card:hover { transform: translateY(-6px); box-shadow: 0 25px 80px rgba(15,23,42,.2); }
-      .input-field { width: 100%; border: 1px solid rgba(148,163,184,.18); background: rgba(15,23,42,.95); color: #e2e8f0; border-radius: 1rem; padding: 1rem 1.1rem; outline: none; transition: border .2s ease, box-shadow .2s ease; }
-      .input-field:focus { border-color: rgba(56,189,248,.8); box-shadow: 0 0 0 4px rgba(56,189,248,.08); }
-      .btn-primary { background-color: #38bdf8; color: #020617; font-weight: 700; transition: all .25s ease; }
-      .btn-primary:hover { background-color: #0ea5e9; transform: translateY(-1px); }
-      .btn-secondary { border: 1px solid rgba(255,255,255,.14); color: #e2e8f0; }
-      .btn { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; border-radius: 999px; transition: transform .2s ease, background .2s ease; }
-      .btn:hover { transform: translateY(-1px); }
-      .section-rule { width: 4rem; height: 3px; background: linear-gradient(90deg,#38bdf8,#3b82f6); border-radius: 999px; margin: 1rem auto 0; }
-      img { display: block; max-width: 100%; height: auto; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact SPARK | Decision Intelligence Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#050C1A; --navy-card:#0A1628; --navy-mid:#0F1E35; --navy-light:#152440;
+      --gold:#C9A84C; --gold-light:#E2C97E; --gold-dim:rgba(201,168,76,0.12); --gold-line:rgba(201,168,76,0.3);
+      --text-white:#F0F4FF; --text-muted:#8A9BB8; --text-dim:#4A5E7A;
+      --green:#1E8A7A; --green-dim:rgba(30,138,122,0.12);
+      --ff-display:'Playfair Display',Georgia,serif;
+      --ff-body:'DM Sans',system-ui,sans-serif;
+      --ff-mono:'DM Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--navy);color:var(--text-white);font-family:var(--ff-body);line-height:1.65;overflow-x:hidden;}
+    a{text-decoration:none;color:inherit;}
+    img{display:block;max-width:100%;}
+    #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.35;}
+    .page-wrap{position:relative;z-index:1;}
+    .W{width:min(1140px,calc(100% - 48px));margin:0 auto;}
+
+    /* NAV */
+    .nav{position:fixed;inset-x:0;top:0;z-index:100;background:rgba(5,12,26,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-line);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
+    .nav-brand{display:flex;align-items:baseline;gap:2px;font-family:var(--ff-display);font-size:1.35rem;font-weight:700;letter-spacing:0.04em;}
+    .nav-brand .s{color:var(--gold);}
+    .nav-brand .tag{font-family:var(--ff-body);font-size:0.6rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-left:10px;border-left:1px solid var(--gold-line);padding-left:10px;align-self:center;}
+    .nav-links{display:flex;align-items:center;gap:4px;}
+    .nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.04em;color:var(--text-muted);padding:6px 14px;border-radius:6px;transition:color .2s,background .2s;}
+    .nav-links a:hover{color:var(--text-white);background:rgba(255,255,255,0.05);}
+    .nav-links a.active{color:var(--gold);}
+    .nav-cta{font-size:0.82rem;font-weight:600;letter-spacing:0.05em;padding:8px 20px;border-radius:6px;background:var(--gold);border:1px solid var(--gold);color:var(--navy);transition:background .2s;margin-left:8px;}
+    .nav-cta:hover{background:var(--gold-light);}
+    .nav-burger{display:none;background:none;border:1px solid var(--gold-line);border-radius:6px;padding:8px 10px;color:var(--text-muted);cursor:pointer;}
+    @media(max-width:860px){.nav-links{display:none;}.nav-burger{display:flex;align-items:center;}.nav-brand .tag{display:none;}}
+    .nav-mobile{display:none;border-top:1px solid var(--gold-line);background:rgba(5,12,26,0.98);}
+    .nav-mobile.open{display:block;}
+    .nav-mobile a{display:block;padding:12px 28px;font-size:0.9rem;font-weight:500;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.04);}
+    .nav-mobile a:hover,.nav-mobile a.active{color:var(--gold);}
+    .nav-mobile .mob-cta{margin:16px 28px;display:block;text-align:center;background:var(--gold);color:var(--navy);font-weight:700;border-radius:6px;padding:11px;}
+
+    /* SHARED */
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+    .eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--gold);}
+    .sec-heading{font-family:var(--ff-display);font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:700;line-height:1.1;color:var(--text-white);letter-spacing:-0.02em;}
+    .sec-heading em{font-style:italic;color:var(--gold);}
+    .gold-rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-line) 30%,var(--gold-line) 70%,transparent);}
+    .sec{padding:96px 0;}
+    .sec-dark{background:var(--navy-card);}
+
+    /* PAGE HERO */
+    .page-hero{padding:140px 0 80px;position:relative;overflow:hidden;background:linear-gradient(160deg, var(--navy) 55%, var(--navy-mid) 100%);}
+    .page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.06) 0%,transparent 70%);pointer-events:none;}
+    .hero-h1{font-family:var(--ff-display);font-size:clamp(2.6rem,5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-0.025em;color:var(--text-white);max-width:640px;margin-bottom:20px;}
+    .hero-h1 em{font-style:italic;color:var(--gold);}
+
+    /* CONTACT LAYOUT */
+    .contact-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:start;}
+    @media(max-width:940px){.contact-layout{grid-template-columns:1fr;gap:40px;}}
+
+    /* INFO PANEL */
+    .info-panel{position:sticky;top:88px;}
+    @media(max-width:940px){.info-panel{position:static;}}
+    .info-title{font-family:var(--ff-display);font-size:1.5rem;font-weight:700;color:var(--text-white);margin-bottom:10px;}
+    .info-sub{font-size:0.95rem;color:var(--text-muted);line-height:1.75;margin-bottom:32px;}
+
+    .contact-item{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .contact-item:last-of-type{border-bottom:none;}
+    .ci-icon{width:40px;height:40px;border-radius:9px;background:var(--gold-dim);border:1px solid var(--gold-line);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:0.9rem;flex-shrink:0;}
+    .ci-label{font-family:var(--ff-mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px;}
+    .ci-val{font-size:0.9rem;color:var(--text-muted);}
+    .ci-val a{color:var(--gold-light);transition:color .2s;}
+    .ci-val a:hover{color:var(--gold);}
+
+    /* EXPECTATIONS */
+    .expect-box{background:var(--navy-card);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:24px;margin-top:28px;}
+    .expect-box h4{font-size:0.85rem;font-weight:600;color:var(--text-white);margin-bottom:16px;}
+    .expect-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
+    .expect-item:last-child{margin-bottom:0;}
+    .expect-item i{color:var(--gold);font-size:0.8rem;margin-top:3px;flex-shrink:0;width:14px;}
+    .expect-item span{font-size:0.855rem;color:var(--text-muted);line-height:1.55;}
+
+    /* FORM PANEL */
+    .form-panel{background:var(--navy-card);border:1px solid var(--gold-line);border-radius:14px;padding:44px;}
+    @media(max-width:560px){.form-panel{padding:28px 20px;}}
+    .form-panel h2{font-family:var(--ff-display);font-size:1.4rem;font-weight:700;color:var(--text-white);margin-bottom:6px;}
+    .form-panel .sub{font-size:0.875rem;color:var(--text-dim);margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,0.06);}
+
+    .f-label{display:block;font-family:var(--ff-mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:7px;}
+    .f-input{width:100%;background:var(--navy);border:1px solid rgba(255,255,255,0.09);border-radius:7px;padding:11px 14px;font-size:0.88rem;color:var(--text-white);outline:none;transition:border-color .2s,box-shadow .2s;font-family:var(--ff-body);display:block;}
+    .f-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.09);}
+    .f-input::placeholder{color:var(--text-dim);}
+    .f-group{margin-bottom:16px;}
+    .f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+    @media(max-width:520px){.f-row{grid-template-columns:1fr;}}
+    select.f-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A5E7A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:11px;cursor:pointer;}
+    select.f-input option{background:var(--navy-mid);color:var(--text-white);}
+
+    /* INTEREST CHECKBOXES */
+    .interest-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
+    @media(max-width:400px){.interest-grid{grid-template-columns:1fr;}}
+    .interest-chip{display:flex;align-items:center;gap:8px;background:var(--navy);border:1px solid rgba(255,255,255,0.09);border-radius:7px;padding:9px 12px;cursor:pointer;transition:border-color .2s,background .2s;}
+    .interest-chip:hover{border-color:var(--gold-line);}
+    .interest-chip.selected{border-color:var(--gold);background:var(--gold-dim);}
+    .interest-chip input{display:none;}
+    .chip-check{width:16px;height:16px;border-radius:4px;border:1px solid var(--text-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,border-color .2s;}
+    .interest-chip.selected .chip-check{background:var(--gold);border-color:var(--gold);}
+    .interest-chip.selected .chip-check i{display:block;}
+    .chip-check i{display:none;color:var(--navy);font-size:0.6rem;}
+    .chip-label{font-size:0.8rem;color:var(--text-muted);}
+    .interest-chip.selected .chip-label{color:var(--gold-light);}
+
+    /* SUBMIT */
+    .btn-submit{width:100%;background:var(--gold);color:var(--navy);font-family:var(--ff-body);font-weight:700;font-size:0.92rem;letter-spacing:0.04em;padding:14px;border-radius:7px;border:none;cursor:pointer;transition:background .2s,transform .15s;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .btn-submit:hover{background:var(--gold-light);transform:translateY(-1px);}
+    .btn-submit i{font-size:0.8rem;}
+    .form-note{font-size:0.75rem;color:var(--text-dim);text-align:center;margin-top:12px;}
+
+    /* SUCCESS */
+    .success-state{display:none;text-align:center;padding:60px 20px;}
+    .success-state .s-icon{width:64px;height:64px;border-radius:50%;background:rgba(30,138,122,0.15);border:1px solid rgba(30,138,122,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.5rem;color:var(--green);}
+    .success-state h3{font-family:var(--ff-display);font-size:1.5rem;font-weight:700;color:var(--text-white);margin-bottom:10px;}
+    .success-state p{font-size:0.9rem;color:var(--text-muted);max-width:320px;margin:0 auto;}
+
+    /* OFFICE CARD */
+    .office-card{background:var(--navy-card);border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;}
+    .office-img img{width:100%;height:180px;object-fit:cover;filter:brightness(0.55) saturate(0.6);}
+    .office-body{padding:22px 24px;}
+    .office-body h4{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--text-white);margin-bottom:6px;}
+    .office-body p{font-size:0.855rem;color:var(--text-muted);line-height:1.65;}
+
+    /* FAQ */
+    .faq-list{display:flex;flex-direction:column;gap:0;}
+    .faq-item{border-bottom:1px solid rgba(255,255,255,0.06);}
+    .faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 0;cursor:pointer;gap:20px;}
+    .faq-q span{font-size:0.95rem;font-weight:500;color:var(--text-white);}
+    .faq-q i{color:var(--gold);font-size:0.8rem;flex-shrink:0;transition:transform .2s;}
+    .faq-item.open .faq-q i{transform:rotate(45deg);}
+    .faq-a{display:none;padding-bottom:18px;}
+    .faq-item.open .faq-a{display:block;}
+    .faq-a p{font-size:0.875rem;color:var(--text-muted);line-height:1.7;}
+
+    /* FOOTER */
+    .footer{padding:40px 0 28px;border-top:1px solid rgba(255,255,255,0.06);background:var(--navy);}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .footer-brand{font-family:var(--ff-display);font-size:1.05rem;font-weight:700;letter-spacing:0.04em;}
+    .footer-brand span{color:var(--gold);}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+    .footer-links a{font-size:0.8rem;color:var(--text-dim);transition:color .2s;}
+    .footer-links a:hover{color:var(--gold);}
+    .footer-copy{font-size:0.75rem;color:var(--text-dim);margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);}
+  </style>
 </head>
-<body class="font-sans antialiased">
-    <!-- Navigation -->
-<nav class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-xl text-white">
-  <div class="container mx-auto flex items-center justify-between px-6 py-4">
-    <a href="index.html" class="inline-flex items-center gap-2 text-2xl font-bold tracking-tight text-white">
-      <span class="text-sky-400">SPARK</span><span class="text-slate-300">Consulting</span>
-    </a>
-    <button id="mobile-menu-button" type="button" class="md:hidden inline-flex items-center justify-center rounded-2xl border border-white/10 bg-slate-900/80 p-3 text-slate-200 hover:bg-slate-900" aria-controls="mobile-menu" aria-expanded="false">
-      <span class="sr-only">Open menu</span>
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="anviksha.html" class="nav-link">Anviksha</a>
-      <a href="sectors.html" class="nav-link">Sectors</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="page-wrap">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="W nav-inner">
+    <a href="index.html" class="nav-brand"><span class="s">SPARK</span>Consulting<span class="tag">Decision Intelligence</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="anviksha.html">Anviksha</a>
+      <a href="sectors.html">Sectors</a>
+      <a href="contact.html" class="nav-cta active">Contact Us</a>
     </div>
+    <button class="nav-burger" id="burger"><i class="fas fa-bars"></i></button>
   </div>
-  <div class="md:hidden" id="mobile-menu" hidden>
-    <div class="border-t border-white/10 bg-slate-950/95 px-6 py-4 space-y-3 text-sm">
-      <a href="index.html" class="nav-link block">Home</a>
-      <a href="about.html" class="nav-link block">About</a>
-      <a href="anviksha.html" class="nav-link block">Anviksha</a>
-      <a href="sectors.html" class="nav-link block">Sectors</a>
-      <a href="contact.html" class="nav-cta block rounded-full px-5 py-2 text-center text-slate-950">Contact</a>
-    </div>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="anviksha.html">Anviksha</a>
+    <a href="sectors.html">Sectors</a>
+    <a href="contact.html" class="mob-cta">Contact Us</a>
   </div>
 </nav>
 
+<!-- HERO -->
+<section class="page-hero">
+  <div class="W">
+    <div class="eyebrow">Get in touch</div>
+    <h1 class="hero-h1">Start your analytics journey with a <em>free assessment.</em></h1>
+    <p style="font-size:1.05rem;color:var(--text-muted);max-width:44rem;line-height:1.75;">Tell us about your business and we'll identify the highest-value analytics opportunities — with a clear path to measurable ROI — in a single 45-minute session.</p>
+  </div>
+</section>
 
-    <main class="pt-28">
-        <section class="relative overflow-hidden bg-slate-950 pb-24 pt-24">
-            <div class="container mx-auto px-6">
-                <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-                    <div class="space-y-8">
-                        <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-xs uppercase tracking-[0.28em] text-sky-300">Contact SPARK</span>
-                        <h1 class="max-w-3xl hero-title font-extrabold text-white text-shadow-soft">Start your analytics journey with a free readiness assessment.</h1>
-                        <p class="max-w-2xl hero-subtitle text-slate-300">Tell us about your SME and we will identify the highest-value analytics initiatives for your business.</p>
-                    </div>
-                    <div class="rounded-[2rem] border border-white/10 bg-slate-900/80 p-4 shadow-2xl backdrop-blur-xl lg:p-6">
-                        <div class="hero-card hero-image-card h-[520px] sm:h-[420px] w-full bg-slate-900/10 shadow-inner">
-                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1080&q=80" alt="Contact support" class="hero-img" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="gold-rule"></div>
 
-        <section class="py-24">
-            <div class="container mx-auto px-6 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start">
-                <div class="rounded-[2rem] border border-slate-200 bg-white/5 p-10 shadow-2xl">
-                    <h2 class="section-title font-bold text-white">Reach out to us</h2>
-                    <p class="mt-4 text-slate-300">Speak with our team about your industry, current systems and the outcomes you want to achieve.</p>
-                    <div class="mt-10 space-y-6 text-slate-300">
-                        <div>
-                            <h3 class="font-semibold text-white">Email</h3>
-                            <p class="mt-2">hello@sparkconsulting.ai</p>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-white">Phone</h3>
-                            <p class="mt-2">+91 98765 43210</p>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-white">Location</h3>
-                            <p class="mt-2">Bengaluru, Karnataka Â· Serving SMEs across India</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-[2rem] bg-slate-900/80 p-10 shadow-2xl border border-white/10">
-                    <form class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-400">Name</label>
-                            <input type="text" placeholder="Your name" class="mt-3 w-full rounded-2xl border border-slate-700 bg-slate-950/90 px-4 py-4 text-white outline-none focus:border-sky-400" />
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-400">Business email</label>
-                            <input type="email" placeholder="name@company.com" class="mt-3 w-full rounded-2xl border border-slate-700 bg-slate-950/90 px-4 py-4 text-white outline-none focus:border-sky-400" />
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-400">Company / segment</label>
-                            <input type="text" placeholder="Manufacturing, Retail, Pharma..." class="mt-3 w-full rounded-2xl border border-slate-700 bg-slate-950/90 px-4 py-4 text-white outline-none focus:border-sky-400" />
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-400">Message</label>
-                            <textarea placeholder="Tell us what you're looking to achieve" rows="5" class="mt-3 w-full rounded-2xl border border-slate-700 bg-slate-950/90 px-4 py-4 text-white outline-none focus:border-sky-400"></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary w-full rounded-full px-6 py-4 text-base font-semibold text-slate-950">Send message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+<!-- CONTACT BODY -->
+<section class="sec">
+  <div class="W">
+    <div class="contact-layout">
 
-    <footer class="border-t border-white/10 bg-slate-950 py-10 text-center text-slate-500">
-        <div class="container mx-auto px-6">
-            © 2026 SPARK Decision Intelligence Consulting
+      <!-- LEFT INFO -->
+      <div class="info-panel">
+        <h2 class="info-title">Let's talk about your business.</h2>
+        <p class="info-sub">Whether you're exploring analytics for the first time or looking to upgrade an existing data setup, our team will give you an honest, practical assessment — no sales pitch, no jargon.</p>
+
+        <div class="contact-item">
+          <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val"><a href="mailto:hello@sparkconsulting.ai">hello@sparkconsulting.ai</a></div>
+          </div>
         </div>
-    </footer>
+        <div class="contact-item">
+          <div class="ci-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-val"><a href="tel:+919876543210">+91 98765 43210</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-val">Bengaluru, Karnataka<br><span style="font-size:0.82rem;color:var(--text-dim);">Serving SMEs across India</span></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <div class="ci-label">Response time</div>
+            <div class="ci-val">Within 1 business day</div>
+          </div>
+        </div>
+
+        <div class="expect-box">
+          <h4>What happens next</h4>
+          <div class="expect-item"><i class="fas fa-check-circle"></i><span>A senior SPARK consultant reviews your submission within 24 hours.</span></div>
+          <div class="expect-item"><i class="fas fa-check-circle"></i><span>We schedule a free 45-minute discovery call to understand your business challenge.</span></div>
+          <div class="expect-item"><i class="fas fa-check-circle"></i><span>We share a tailored assessment — top 3 analytics opportunities with indicative ROI.</span></div>
+          <div class="expect-item"><i class="fas fa-check-circle"></i><span>No obligation to proceed. The assessment is yours to keep.</span></div>
+        </div>
+
+        <div class="office-card" style="margin-top:24px;">
+          <div class="office-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80" alt="Office"></div>
+          <div class="office-body">
+            <h4>Bengaluru HQ</h4>
+            <p>Our home base in India's technology capital, serving SMEs across manufacturing, retail, agri-food, IT and healthcare corridors nationwide.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT FORM -->
+      <div class="form-panel">
+        <div id="formWrap">
+          <h2>Request a free assessment</h2>
+          <p class="sub">Complete the form and we'll be in touch within one business day. All fields marked with * are required.</p>
+
+          <div class="f-row">
+            <div>
+              <label class="f-label">First name *</label>
+              <input type="text" class="f-input" placeholder="Arjun" id="fname">
+            </div>
+            <div>
+              <label class="f-label">Last name *</label>
+              <input type="text" class="f-input" placeholder="Sharma" id="lname">
+            </div>
+          </div>
+
+          <div class="f-row">
+            <div>
+              <label class="f-label">Business email *</label>
+              <input type="email" class="f-input" placeholder="arjun@company.com" id="email">
+            </div>
+            <div>
+              <label class="f-label">Phone number</label>
+              <input type="tel" class="f-input" placeholder="+91 98765 43210">
+            </div>
+          </div>
+
+          <div class="f-row">
+            <div>
+              <label class="f-label">Company name *</label>
+              <input type="text" class="f-input" placeholder="Your company" id="company">
+            </div>
+            <div>
+              <label class="f-label">Annual revenue (approx.)</label>
+              <select class="f-input">
+                <option value="" disabled selected>Select range</option>
+                <option>Below ₹1 Cr</option>
+                <option>₹1 – 5 Cr</option>
+                <option>₹5 – 25 Cr</option>
+                <option>₹25 – 100 Cr</option>
+                <option>Above ₹100 Cr</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="f-group">
+            <label class="f-label">Industry sector *</label>
+            <select class="f-input" id="sector">
+              <option value="" disabled selected>Select your sector</option>
+              <option>Manufacturing</option>
+              <option>Retail &amp; E-commerce</option>
+              <option>Agri &amp; Food</option>
+              <option>IT &amp; Services</option>
+              <option>Healthcare &amp; Pharma</option>
+              <option>FMCG &amp; Distribution</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="f-group">
+            <label class="f-label" style="margin-bottom:10px;">Areas of interest (select all that apply)</label>
+            <div class="interest-grid" id="interests">
+              <div class="interest-chip" onclick="toggleChip(this)">
+                <div class="chip-check"><i class="fas fa-check"></i></div>
+                <span class="chip-label">Demand forecasting</span>
+              </div>
+              <div class="interest-chip" onclick="toggleChip(this)">
+                <div class="chip-check"><i class="fas fa-check"></i></div>
+                <span class="chip-label">Inventory optimisation</span>
+              </div>
+              <div class="interest-chip" onclick="toggleChip(this)">
+                <div class="chip-check"><i class="fas fa-check"></i></div>
+                <span class="chip-label">Production planning</span>
+              </div>
+              <div class="interest-chip" onclick="toggleChip(this)">
+                <div class="chip-check"><i class="fas fa-check"></i></div>
+                <span class="chip-label">Supply chain visibility</span>
+              </div>
+              <div class="interest-chip" onclick="toggleChip(this)">
+                <div class="chip-check"><i class="fas fa-check"></i></div>
+                <span class="chip-label">Financial analytics</span>
+              </div>
+              <div class="interest-chip" onclick="toggleChip(this)">
+                <div class="chip-check"><i class="fas fa-check"></i></div>
+                <span class="chip-label">Quality &amp; compliance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="f-group">
+            <label class="f-label">Tell us about your biggest challenge *</label>
+            <textarea class="f-input" rows="4" placeholder="Describe the operational or business problem you're trying to solve — e.g. 'Our inventory planning is manual and we carry too much stock of slow-moving items while running out of fast-movers'" id="message" style="resize:vertical;"></textarea>
+          </div>
+
+          <div class="f-group">
+            <label class="f-label">How did you hear about SPARK?</label>
+            <select class="f-input">
+              <option value="" disabled selected>Select source</option>
+              <option>LinkedIn</option>
+              <option>Google search</option>
+              <option>Referral from colleague</option>
+              <option>Industry event</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <button class="btn-submit" onclick="submitForm()">
+            Send message &nbsp;<i class="fas fa-paper-plane"></i>
+          </button>
+          <p class="form-note">By submitting you agree to our privacy policy. We never share your data with third parties.</p>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="success-state" id="successState">
+          <div class="s-icon"><i class="fas fa-check"></i></div>
+          <h3>Message received!</h3>
+          <p>Thank you for reaching out. A senior SPARK consultant will contact you within one business day to schedule your free assessment.</p>
+          <div style="margin-top:28px;padding:20px;background:var(--navy-mid);border-radius:10px;border:1px solid rgba(255,255,255,0.07);">
+            <p style="font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px;">While you wait</p>
+            <p style="font-size:0.875rem;color:var(--text-muted);">Explore the <a href="anviksha.html" style="color:var(--gold-light);">Anviksha platform</a> or read about our <a href="sectors.html" style="color:var(--gold-light);">sector expertise</a>.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- FAQ -->
+<section class="sec sec-dark">
+  <div class="W">
+    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;">
+      <div>
+        <div class="eyebrow">Common questions</div>
+        <h2 class="sec-heading" style="margin-top:14px;">Before you <em>reach out.</em></h2>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.75;margin-top:14px;">If you don't find your answer here, just ask us directly — we'll always give you a straight, honest answer.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>How quickly can SPARK deliver first results?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a"><p>Most clients see their first actionable insights within 30 days of engagement start. Our phased deployment model is designed for early wins — typically in procurement, inventory or production planning — that build confidence and pay for the next phase of work.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Do we need an IT team to implement Anviksha?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a"><p>No. SPARK's implementation team handles all data integration, model setup and dashboard configuration. We work with your existing ERP, accounting system and data files — including Excel sheets, Tally exports and CSV data. Your IT team's involvement is minimal, typically limited to providing data access credentials.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>What does a typical SPARK engagement cost?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a"><p>Engagements are structured in phases to match SME budgets. A typical discovery and pilot phase ranges from ₹3–8 lakhs depending on data complexity and scope, with subsequent phases tied to delivered value. We share a detailed, transparent cost breakdown during the free assessment — no surprises.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Is our business data secure with SPARK?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a"><p>All data is processed and stored within Indian jurisdiction. Anviksha uses enterprise-grade encryption, role-based access controls and full audit trails. We sign mutual NDAs before any data sharing and our infrastructure is aligned with SOC 2 security standards. Your data is never used for any purpose other than your own analytics.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>What happens if our data quality is poor?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a"><p>Poor data quality is the norm for most Indian SMEs — and we've built Anviksha to handle it. Our data profiling step identifies gaps and inconsistencies upfront. We then work with you to implement lightweight data quality controls as part of the engagement, improving data reliability progressively alongside analytics delivery.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Can SPARK work with our existing ERP or accounting system?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a"><p>Yes. Anviksha has pre-built connectors for Tally, SAP Business One, Zoho Books, Microsoft Dynamics, Oracle NetSuite and many others. For less common systems, we use API integration or structured data exports. We've worked with virtually every ERP used by Indian SMEs and have never encountered a system we couldn't connect to.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="W">
+    <div class="footer-inner">
+      <div class="footer-brand"><span>SPARK</span>Consulting</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="anviksha.html">Anviksha</a><a href="sectors.html">Sectors</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 SPARK Decision Intelligence Consulting · Bengaluru, India · hello@sparkconsulting.ai</div>
+  </div>
+</footer>
+
+</div>
 <script>
-  function activateNavLinks() {
-    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav a[href]').forEach(function(link) {
-      var href = link.getAttribute('href');
-      if (href === currentPage || (href === 'index.html' && currentPage === '')) {
-        link.classList.remove('text-slate-300');
-        link.classList.add('bg-slate-900', 'text-white');
-      } else {
-        link.classList.remove('bg-slate-900', 'text-white');
-        link.classList.add('text-slate-300');
+  document.getElementById('burger').addEventListener('click',function(){document.getElementById('mobileNav').classList.toggle('open');});
+
+  function toggleChip(el) {
+    el.classList.toggle('selected');
+  }
+
+  function submitForm() {
+    const required = ['fname','lname','email','company','sector','message'];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && !el.value.trim()) {
+        el.style.borderColor = '#F87171';
+        valid = false;
+        el.addEventListener('input', () => el.style.borderColor = '', {once:true});
       }
     });
+    if (!valid) return;
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('successState').style.display = 'block';
   }
-  document.addEventListener('DOMContentLoaded', function() {
-    activateNavLinks();
-    var mobileMenuButton = document.getElementById('mobile-menu-button');
-    var mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', function() {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', String(!expanded));
-        mobileMenu.hidden = expanded;
-      });
-    }
-  });
+
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  /* Network canvas */
+  (function(){const c=document.getElementById('bg-canvas'),x=c.getContext('2d');let W,H,n=[];const G='rgba(201,168,76,',B='rgba(59,95,192,';function r(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}function i(){n=[];const k=Math.min(Math.floor(W*H/22000),45);for(let j=0;j<k;j++)n.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.24,vy:(Math.random()-.5)*.24,r:Math.random()*1.6+0.5,g:Math.random()>.65});}function d(){x.clearRect(0,0,W,H);const m=150;for(let a=0;a<n.length;a++)for(let b=a+1;b<n.length;b++){const p=n[a],q=n[b],dx=p.x-q.x,dy=p.y-q.y,dt=Math.sqrt(dx*dx+dy*dy);if(dt<m){const al=(1-dt/m)*.2;x.strokeStyle=(p.g||q.g?G:B)+al+')';x.lineWidth=0.55;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke();}}n.forEach(p=>{x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=(p.g?G:B)+'0.65)';x.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;});requestAnimationFrame(d);}window.addEventListener('resize',()=>{r();i();});r();i();d();})();
 </script>
 </body>
 </html>
-

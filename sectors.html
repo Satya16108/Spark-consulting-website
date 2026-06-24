@@ -1,198 +1,520 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sectors | SPARK Consulting</title>
-    
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2745%27 fill=%27%2338bdf8%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-size=%2748%27 text-anchor=%27middle%27 fill=%27%230f172a%27 font-family=%27Arial%27%3ES%3C/text%3E%3C/svg%3E">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] } } } };
-    </script>
-    <style>
-      :root { color-scheme: dark; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
-      *, *::before, *::after { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top, rgba(56,189,248,.08), transparent 22%), #020617; color: #e2e8f0; line-height: 1.75; }
-      a { color: inherit; text-decoration: none; }
-      button, input, textarea { font: inherit; }
-      .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
-      .site-header { background: rgba(3, 12, 26, .92); border-bottom: 1px solid rgba(148,163,184,.12); }
-      .nav-link { color: #94a3b8; transition: color .25s ease; }
-      .nav-link:hover, .nav-link.active { color: #fff; }
-      .nav-cta { background: #38bdf8; color: #020617; font-weight: 700; }
-      .nav-cta:hover { background: #0ea5e9; }
-      .hero-title { font-size: clamp(3.5rem, 5vw, 5.5rem); line-height: 1.02; letter-spacing: -0.04em; }
-      .hero-subtitle { color: #cbd5e1; font-size: clamp(1rem, 1.4vw, 1.3rem); max-width: 44rem; }
-      .section-title { font-size: clamp(2.4rem, 3vw, 4rem); line-height: 1.05; }
-      .section-text { color: #94a3b8; }
-      .surface-card { background: rgba(15, 23, 42, .88); border: 1px solid rgba(148,163,184,.1); border-radius: 1.75rem; }
-      .hero-card { position: relative; overflow: hidden; border-radius: 1.75rem; background: #07111f; }
-      .hero-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(56,189,248,.14), transparent 28%), radial-gradient(circle at bottom right, rgba(14,165,233,.12), transparent 22%); pointer-events: none; }
-      .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; border-radius: 1.75rem; }
-      .hero-card:hover .hero-img { transform: scale(1.02); }
-      .feature-card { transition: transform .3s ease, box-shadow .3s ease; }
-      .feature-card:hover { transform: translateY(-6px); box-shadow: 0 25px 80px rgba(15,23,42,.2); }
-      .input-field { width: 100%; border: 1px solid rgba(148,163,184,.18); background: rgba(15,23,42,.95); color: #e2e8f0; border-radius: 1rem; padding: 1rem 1.1rem; outline: none; transition: border .2s ease, box-shadow .2s ease; }
-      .input-field:focus { border-color: rgba(56,189,248,.8); box-shadow: 0 0 0 4px rgba(56,189,248,.08); }
-      .btn-primary { background-color: #38bdf8; color: #020617; font-weight: 700; transition: all .25s ease; }
-      .btn-primary:hover { background-color: #0ea5e9; transform: translateY(-1px); }
-      .btn-secondary { border: 1px solid rgba(255,255,255,.14); color: #e2e8f0; }
-      .btn { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; border-radius: 999px; transition: transform .2s ease, background .2s ease; }
-      .btn:hover { transform: translateY(-1px); }
-      .section-rule { width: 4rem; height: 3px; background: linear-gradient(90deg,#38bdf8,#3b82f6); border-radius: 999px; margin: 1rem auto 0; }
-      img { display: block; max-width: 100%; height: auto; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sectors | SPARK Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#050C1A; --navy-card:#0A1628; --navy-mid:#0F1E35; --navy-light:#152440;
+      --gold:#C9A84C; --gold-light:#E2C97E; --gold-dim:rgba(201,168,76,0.12); --gold-line:rgba(201,168,76,0.3);
+      --text-white:#F0F4FF; --text-muted:#8A9BB8; --text-dim:#4A5E7A;
+      --ff-display:'Playfair Display',Georgia,serif;
+      --ff-body:'DM Sans',system-ui,sans-serif;
+      --ff-mono:'DM Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--navy);color:var(--text-white);font-family:var(--ff-body);line-height:1.65;overflow-x:hidden;}
+    a{text-decoration:none;color:inherit;}
+    img{display:block;max-width:100%;}
+    #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.36;}
+    .page-wrap{position:relative;z-index:1;}
+    .W{width:min(1140px,calc(100% - 48px));margin:0 auto;}
+
+    /* NAV */
+    .nav{position:fixed;inset-x:0;top:0;z-index:100;background:rgba(5,12,26,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-line);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
+    .nav-brand{display:flex;align-items:baseline;gap:2px;font-family:var(--ff-display);font-size:1.35rem;font-weight:700;letter-spacing:0.04em;}
+    .nav-brand .s{color:var(--gold);}
+    .nav-brand .tag{font-family:var(--ff-body);font-size:0.6rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-left:10px;border-left:1px solid var(--gold-line);padding-left:10px;align-self:center;}
+    .nav-links{display:flex;align-items:center;gap:4px;}
+    .nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.04em;color:var(--text-muted);padding:6px 14px;border-radius:6px;transition:color .2s,background .2s;}
+    .nav-links a:hover{color:var(--text-white);background:rgba(255,255,255,0.05);}
+    .nav-links a.active{color:var(--gold);}
+    .nav-cta{font-size:0.82rem;font-weight:600;letter-spacing:0.05em;padding:8px 20px;border-radius:6px;background:transparent;border:1px solid var(--gold);color:var(--gold);transition:background .2s,color .2s;margin-left:8px;}
+    .nav-cta:hover{background:var(--gold);color:var(--navy);}
+    .nav-burger{display:none;background:none;border:1px solid var(--gold-line);border-radius:6px;padding:8px 10px;color:var(--text-muted);cursor:pointer;}
+    @media(max-width:860px){.nav-links{display:none;}.nav-burger{display:flex;align-items:center;}.nav-brand .tag{display:none;}}
+    .nav-mobile{display:none;border-top:1px solid var(--gold-line);background:rgba(5,12,26,0.98);}
+    .nav-mobile.open{display:block;}
+    .nav-mobile a{display:block;padding:12px 28px;font-size:0.9rem;font-weight:500;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.04);}
+    .nav-mobile a:hover,.nav-mobile a.active{color:var(--gold);}
+    .nav-mobile .mob-cta{margin:16px 28px;display:block;text-align:center;background:var(--gold);color:var(--navy);font-weight:700;border-radius:6px;padding:11px;}
+
+    /* SHARED */
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+    .eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--gold);}
+    .sec-heading{font-family:var(--ff-display);font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:700;line-height:1.1;color:var(--text-white);letter-spacing:-0.02em;}
+    .sec-heading em{font-style:italic;color:var(--gold);}
+    .sec-sub{font-size:1rem;color:var(--text-muted);line-height:1.75;}
+    .gold-rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-line) 30%,var(--gold-line) 70%,transparent);}
+    .sec{padding:96px 0;}
+    .sec-dark{background:var(--navy-card);}
+    .sec-mid{background:var(--navy-mid);}
+    .btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);font-weight:700;font-size:0.88rem;letter-spacing:0.04em;padding:13px 28px;border-radius:6px;transition:background .2s,transform .15s;}
+    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+    .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text-white);font-weight:500;font-size:0.88rem;padding:13px 28px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);transition:border-color .2s,color .2s;}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+    /* PAGE HERO */
+    .page-hero{padding:140px 0 96px;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;bottom:-120px;left:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.05) 0%,transparent 70%);pointer-events:none;}
+    .hero-h1{font-family:var(--ff-display);font-size:clamp(2.6rem,5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-0.025em;color:var(--text-white);max-width:680px;margin-bottom:22px;}
+    .hero-h1 em{font-style:italic;color:var(--gold);}
+
+    /* SECTOR TABS LAYOUT */
+    .sector-layout{display:grid;grid-template-columns:260px 1fr;gap:0;border:1px solid var(--gold-line);border-radius:14px;overflow:hidden;background:var(--navy-card);}
+    @media(max-width:860px){.sector-layout{grid-template-columns:1fr;}}
+
+    .sector-tabs{border-right:1px solid var(--gold-line);}
+    @media(max-width:860px){.sector-tabs{border-right:none;border-bottom:1px solid var(--gold-line);display:flex;overflow-x:auto;scrollbar-width:none;}}
+    .sector-tabs::-webkit-scrollbar{display:none;}
+    .stab{display:flex;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.05);transition:background .2s;position:relative;}
+    @media(max-width:860px){.stab{flex-direction:column;gap:6px;padding:14px 18px;min-width:100px;border-bottom:none;border-right:1px solid rgba(255,255,255,0.05);text-align:center;}}
+    .stab:last-child{border-bottom:none;}
+    @media(max-width:860px){.stab:last-child{border-right:none;}}
+    .stab.active,.stab:hover{background:var(--navy-light);}
+    .stab.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);}
+    @media(max-width:860px){.stab.active::before{left:0;top:auto;bottom:0;width:100%;height:2px;}}
+    .stab-icon{width:36px;height:36px;border-radius:8px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:0.9rem;flex-shrink:0;}
+    .stab.active .stab-icon{background:var(--gold);color:var(--navy);}
+    .stab-name{font-size:0.875rem;font-weight:500;color:var(--text-muted);}
+    .stab.active .stab-name{color:var(--text-white);font-weight:600;}
+
+    /* SECTOR PANEL */
+    .sector-panel{display:none;padding:40px;}
+    @media(max-width:860px){.sector-panel{padding:28px 20px;}}
+    .sector-panel.active{display:block;}
+
+    .sp-tag{font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;}
+    .sp-title{font-family:var(--ff-display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;color:var(--text-white);line-height:1.15;margin-bottom:12px;}
+    .sp-title em{font-style:italic;color:var(--gold);}
+    .sp-desc{font-size:0.95rem;color:var(--text-muted);line-height:1.75;margin-bottom:28px;max-width:52rem;}
+
+    .sp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;}
+    @media(max-width:600px){.sp-grid{grid-template-columns:1fr;}}
+    .sp-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:18px;}
+    .sp-card h4{font-size:0.9rem;font-weight:600;color:var(--text-white);margin-bottom:6px;}
+    .sp-card p{font-size:0.8rem;color:var(--text-muted);line-height:1.6;}
+
+    .kpi-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;}
+    .kpi-pill{background:var(--gold-dim);border:1px solid var(--gold-line);border-radius:999px;padding:5px 14px;font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);}
+
+    .sp-img{width:100%;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);margin-bottom:24px;max-height:220px;}
+    .sp-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.6) saturate(0.7);}
+
+    /* DELIVERY MODEL */
+    .delivery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    @media(max-width:760px){.delivery-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.delivery-grid{grid-template-columns:1fr;}}
+    .del-card{background:var(--navy-card);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:28px;border-top:2px solid var(--gold);}
+    .del-num{font-family:var(--ff-display);font-size:2.5rem;font-weight:700;color:var(--gold);opacity:0.25;line-height:1;margin-bottom:12px;}
+    .del-card h3{font-size:1rem;font-weight:600;color:var(--text-white);margin-bottom:8px;}
+    .del-card p{font-size:0.855rem;color:var(--text-muted);line-height:1.65;}
+
+    /* CTA STRIP */
+    .cta-strip{background:linear-gradient(135deg,var(--navy-mid),var(--navy-card));border:1px solid var(--gold-line);border-radius:14px;padding:52px 56px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+    @media(max-width:680px){.cta-strip{padding:36px 28px;}}
+    .cta-strip h2{font-family:var(--ff-display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;color:var(--text-white);line-height:1.2;}
+    .cta-strip h2 em{font-style:italic;color:var(--gold);}
+
+    /* FOOTER */
+    .footer{padding:40px 0 28px;border-top:1px solid rgba(255,255,255,0.06);background:var(--navy);}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .footer-brand{font-family:var(--ff-display);font-size:1.05rem;font-weight:700;letter-spacing:0.04em;}
+    .footer-brand span{color:var(--gold);}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+    .footer-links a{font-size:0.8rem;color:var(--text-dim);transition:color .2s;}
+    .footer-links a:hover{color:var(--gold);}
+    .footer-copy{font-size:0.75rem;color:var(--text-dim);margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);}
+  </style>
 </head>
-<body class="font-sans antialiased">
-    <!-- Navigation -->
-<nav class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-xl text-white">
-  <div class="container mx-auto flex items-center justify-between px-6 py-4">
-    <a href="index.html" class="inline-flex items-center gap-2 text-2xl font-bold tracking-tight text-white">
-      <span class="text-sky-400">SPARK</span><span class="text-slate-300">Consulting</span>
-    </a>
-    <button id="mobile-menu-button" type="button" class="md:hidden inline-flex items-center justify-center rounded-2xl border border-white/10 bg-slate-900/80 p-3 text-slate-200 hover:bg-slate-900" aria-controls="mobile-menu" aria-expanded="false">
-      <span class="sr-only">Open menu</span>
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="anviksha.html" class="nav-link">Anviksha</a>
-      <a href="sectors.html" class="nav-link">Sectors</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="page-wrap">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="W nav-inner">
+    <a href="index.html" class="nav-brand"><span class="s">SPARK</span>Consulting<span class="tag">Decision Intelligence</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="anviksha.html">Anviksha</a>
+      <a href="sectors.html" class="active">Sectors</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
     </div>
+    <button class="nav-burger" id="burger"><i class="fas fa-bars"></i></button>
   </div>
-  <div class="md:hidden" id="mobile-menu" hidden>
-    <div class="border-t border-white/10 bg-slate-950/95 px-6 py-4 space-y-3 text-sm">
-      <a href="index.html" class="nav-link block">Home</a>
-      <a href="about.html" class="nav-link block">About</a>
-      <a href="anviksha.html" class="nav-link block">Anviksha</a>
-      <a href="sectors.html" class="nav-link block">Sectors</a>
-      <a href="contact.html" class="nav-cta block rounded-full px-5 py-2 text-center text-slate-950">Contact</a>
-    </div>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="anviksha.html">Anviksha</a>
+    <a href="sectors.html" class="active">Sectors</a>
+    <a href="contact.html" class="mob-cta">Contact Us</a>
   </div>
 </nav>
 
+<!-- HERO -->
+<section class="page-hero">
+  <div class="W">
+    <div class="eyebrow">Industry verticals</div>
+    <h1 class="hero-h1">Deep sector expertise for <em>faster, sharper</em> analytics adoption.</h1>
+    <p style="font-size:1.05rem;color:var(--text-muted);max-width:48rem;line-height:1.75;margin-bottom:36px;">We don't apply generic analytics to your business. Every vertical comes with pre-built KPI libraries, sector-specific decision workflows and implementation pathways refined across real Indian SME deployments.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="contact.html" class="btn-gold">Talk to a sector expert <i class="fas fa-arrow-right" style="font-size:.75rem;"></i></a>
+      <a href="anviksha.html" class="btn-outline">See the platform</a>
+    </div>
+  </div>
+</section>
 
-    <main class="pt-28">
-        <section class="relative overflow-hidden bg-slate-950 pb-24 pt-24">
-            <div class="container mx-auto px-6">
-                <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-                    <div class="space-y-8">
-                        <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-xs uppercase tracking-[0.28em] text-sky-300">Sector focus</span>
-                        <h1 class="max-w-3xl hero-title font-extrabold text-white text-shadow-soft">Analytics models crafted for the highest impact SME verticals.</h1>
-                        <p class="max-w-2xl hero-subtitle text-slate-300">We bring industry-specific KPIs, templates and decision workflows to manufacturing, retail, agri-food, IT services and healthcare.</p>
-                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-                            <a href="contact.html" class="btn-primary inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-slate-950 shadow-lg">Talk to our sector team</a>
-                            <a href="about.html" class="inline-flex items-center justify-center rounded-full border border-white/10 px-8 py-4 text-base font-semibold text-white hover:bg-white/10">Why we focus sectors</a>
-                        </div>
-                    </div>
-                    <div class="rounded-[2rem] border border-white/10 bg-slate-900/80 p-4 shadow-2xl backdrop-blur-xl lg:p-6">
-                        <div class="hero-card hero-image-card h-[520px] sm:h-[420px] w-full bg-slate-900/10 shadow-inner">
-                            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1080&q=80" alt="Sector analytics" class="hero-img" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="gold-rule"></div>
 
-        <section class="py-24">
-            <div class="container mx-auto px-6 text-center">
-                <span class="text-sky-400 uppercase tracking-[0.35em] text-sm font-semibold">Industries</span>
-                <h2 class="mt-4 section-title font-bold text-white">Deep vertical expertise for faster adoption.</h2>
-                <p class="mt-4 text-slate-400 max-w-3xl mx-auto">Each sector is supported by tailored analytics playbooks, performance metrics and implementation pathways.</p>
-            </div>
-            <div class="mt-16 grid gap-8 lg:grid-cols-3">
-                <article class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                    <span class="text-sky-300 text-3xl"><i class="fas fa-industry"></i></span>
-                    <h3 class="mt-6 text-2xl font-semibold text-white">Manufacturing</h3>
-                    <p class="mt-4 text-slate-400">Production planning, OEE, predictive maintenance and supplier scoring.</p>
-                </article>
-                <article class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                    <span class="text-sky-300 text-3xl"><i class="fas fa-shopping-cart"></i></span>
-                    <h3 class="mt-6 text-2xl font-semibold text-white">Retail & E-commerce</h3>
-                    <p class="mt-4 text-slate-400">Assortment planning, demand sensing and campaign ROI for omnichannel sellers.</p>
-                </article>
-                <article class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                    <span class="text-sky-300 text-3xl"><i class="fas fa-seedling"></i></span>
-                    <h3 class="mt-6 text-2xl font-semibold text-white">Agri & Food</h3>
-                    <p class="mt-4 text-slate-400">Harvest planning, quality grading and perishable logistics analytics.</p>
-                </article>
-                <article class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                    <span class="text-sky-300 text-3xl"><i class="fas fa-laptop-code"></i></span>
-                    <h3 class="mt-6 text-2xl font-semibold text-white">IT & Services</h3>
-                    <p class="mt-4 text-slate-400">Resource utilization, project health and profitability planning for service firms.</p>
-                </article>
-                <article class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                    <span class="text-sky-300 text-3xl"><i class="fas fa-pills"></i></span>
-                    <h3 class="mt-6 text-2xl font-semibold text-white">Healthcare & Pharma</h3>
-                    <p class="mt-4 text-slate-400">Batch planning, compliance dashboards and demand forecasting for regulated products.</p>
-                </article>
-                <article class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                    <span class="text-sky-300 text-3xl"><i class="fas fa-globe-asia"></i></span>
-                    <h3 class="mt-6 text-2xl font-semibold text-white">FMCG & Distribution</h3>
-                    <p class="mt-4 text-slate-400">Supply chain resilience, stock health and turnover analytics for high-velocity goods.</p>
-                </article>
-            </div>
-        </section>
+<!-- INTERACTIVE SECTOR TABS -->
+<section class="sec">
+  <div class="W">
+    <div style="margin-bottom:40px;">
+      <div class="eyebrow">Select a sector</div>
+      <h2 class="sec-heading" style="margin-top:14px;max-width:36rem;">Six verticals. One <em>consistent standard</em> of analytics excellence.</h2>
+    </div>
 
-        <section class="bg-slate-900 py-24">
-            <div class="container mx-auto px-6 grid gap-8 lg:grid-cols-3">
-                <div class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                    <h3 class="text-xl font-semibold text-white">Faster pilots</h3>
-                    <p class="mt-4 text-slate-400">Use cases and outcomes mapped before implementation starts.</p>
-                </div>
-                <div class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                    <h3 class="text-xl font-semibold text-white">Template-driven
-analytics</h3>
-                    <p class="mt-4 text-slate-400">Built for SMEs with clear business KPIs and simple adoption steps.</p>
-                </div>
-                <div class="rounded-[2rem] border border-slate-800 bg-slate-950/80 p-8 shadow-2xl">
-                    <h3 class="text-xl font-semibold text-white">Local execution</h3>
-                    <p class="mt-4 text-slate-400">Hands-on support aligned with Indian operating rhythms and data realities.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+    <div class="sector-layout">
 
-    <footer class="border-t border-white/10 bg-slate-950 py-10 text-center text-slate-500">
-        <div class="container mx-auto px-6">
-            © 2026 SPARK Decision Intelligence Consulting · <a href="contact.html" class="text-sky-400 hover:text-sky-300">Contact us</a>
+      <!-- TABS -->
+      <div class="sector-tabs">
+        <div class="stab active" onclick="showSector('mfg',this)">
+          <div class="stab-icon"><i class="fas fa-industry"></i></div>
+          <span class="stab-name">Manufacturing</span>
         </div>
-    </footer>
+        <div class="stab" onclick="showSector('retail',this)">
+          <div class="stab-icon"><i class="fas fa-shopping-cart"></i></div>
+          <span class="stab-name">Retail &amp; E-com</span>
+        </div>
+        <div class="stab" onclick="showSector('agri',this)">
+          <div class="stab-icon"><i class="fas fa-seedling"></i></div>
+          <span class="stab-name">Agri &amp; Food</span>
+        </div>
+        <div class="stab" onclick="showSector('it',this)">
+          <div class="stab-icon"><i class="fas fa-laptop-code"></i></div>
+          <span class="stab-name">IT &amp; Services</span>
+        </div>
+        <div class="stab" onclick="showSector('pharma',this)">
+          <div class="stab-icon"><i class="fas fa-pills"></i></div>
+          <span class="stab-name">Healthcare &amp; Pharma</span>
+        </div>
+        <div class="stab" onclick="showSector('fmcg',this)">
+          <div class="stab-icon"><i class="fas fa-boxes"></i></div>
+          <span class="stab-name">FMCG &amp; Distribution</span>
+        </div>
+      </div>
+
+      <!-- PANELS -->
+      <div>
+
+        <!-- MANUFACTURING -->
+        <div id="sec-mfg" class="sector-panel active">
+          <span class="sp-tag">Manufacturing</span>
+          <h2 class="sp-title">Maximise throughput. Eliminate <em>hidden losses.</em></h2>
+          <div class="sp-img"><img src="https://images.unsplash.com/photo-1581091012184-7b9b5d6af7d4?auto=format&fit=crop&w=900&q=80" alt="Manufacturing"></div>
+          <p class="sp-desc">Production planning, OEE monitoring, predictive maintenance and supplier reliability scoring for shop floors across India. Anviksha connects machine data, ERP and workforce systems to surface the decisions that most affect output and cost.</p>
+          <div class="kpi-row">
+            <span class="kpi-pill">OEE</span>
+            <span class="kpi-pill">Downtime</span>
+            <span class="kpi-pill">Yield rate</span>
+            <span class="kpi-pill">Supplier OTIF</span>
+            <span class="kpi-pill">Capacity utilisation</span>
+            <span class="kpi-pill">Quality reject %</span>
+          </div>
+          <div class="sp-grid">
+            <div class="sp-card">
+              <h4>Predictive maintenance</h4>
+              <p>Detect equipment degradation 7–14 days before failure. Reduce unplanned downtime and emergency maintenance costs.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Production scheduling</h4>
+              <p>Capacity-aware daily schedules that balance demand, materials and workforce — with same-day replanning when conditions change.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Supplier risk scoring</h4>
+              <p>Rank vendors by delivery reliability, quality consistency and price volatility. Prioritise dual-sourcing where risk is highest.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Quality analytics</h4>
+              <p>In-process SPC charts, batch traceability and root cause recommendations — linked to shift, operator and machine data.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="btn-gold" style="font-size:0.85rem;padding:11px 22px;">Talk to our manufacturing specialist <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></a>
+        </div>
+
+        <!-- RETAIL -->
+        <div id="sec-retail" class="sector-panel">
+          <span class="sp-tag">Retail &amp; E-commerce</span>
+          <h2 class="sp-title">Every inventory decision <em>optimised.</em></h2>
+          <div class="sp-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" alt="Retail"></div>
+          <p class="sp-desc">Assortment planning, demand sensing, promotion ROI and omnichannel stock optimisation for retail chains, D2C brands and marketplace sellers. From single-store SMEs to 50-outlet chains, Anviksha scales with your business.</p>
+          <div class="kpi-row">
+            <span class="kpi-pill">Sell-through rate</span>
+            <span class="kpi-pill">GMROI</span>
+            <span class="kpi-pill">Stock-out %</span>
+            <span class="kpi-pill">Promo ROI</span>
+            <span class="kpi-pill">Customer LTV</span>
+            <span class="kpi-pill">Returns rate</span>
+          </div>
+          <div class="sp-grid">
+            <div class="sp-card">
+              <h4>Assortment planning</h4>
+              <p>Identify top-performing SKUs and eliminate slow movers using demand signals, margin contribution and shelf velocity.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Demand sensing</h4>
+              <p>Short-horizon forecasts that capture festive spikes, local trends and weather impacts — updated daily from POS actuals.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Promotion analytics</h4>
+              <p>Measure true incremental lift for each campaign, identify cannibalisation and recommend the next best promotional action.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Customer segmentation</h4>
+              <p>RFM segmentation and churn prediction to focus loyalty spend on the customers who drive disproportionate revenue.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="btn-gold" style="font-size:0.85rem;padding:11px 22px;">Talk to our retail specialist <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></a>
+        </div>
+
+        <!-- AGRI -->
+        <div id="sec-agri" class="sector-panel">
+          <span class="sp-tag">Agri &amp; Food</span>
+          <h2 class="sp-title">From farm to customer — <em>zero waste.</em></h2>
+          <div class="sp-img"><img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=80" alt="Agriculture"></div>
+          <p class="sp-desc">Harvest forecasting, quality grading analytics, cold-chain tracking and perishable logistics optimisation for food processors, agri-businesses and commodity traders operating across India's diverse supply chains.</p>
+          <div class="kpi-row">
+            <span class="kpi-pill">Post-harvest loss %</span>
+            <span class="kpi-pill">Throughput</span>
+            <span class="kpi-pill">Cold chain uptime</span>
+            <span class="kpi-pill">Grade yield</span>
+            <span class="kpi-pill">Procurement cost</span>
+            <span class="kpi-pill">Traceability score</span>
+          </div>
+          <div class="sp-grid">
+            <div class="sp-card">
+              <h4>Harvest forecasting</h4>
+              <p>Predict crop yield and timing using weather, soil and historical data. Align procurement, processing and logistics ahead of time.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Quality grading analytics</h4>
+              <p>Automate grade classification and track quality parameters from intake to dispatch — reducing subjectivity and disputes.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Cold chain optimisation</h4>
+              <p>Monitor temperature compliance, predict shelf-life remaining and optimise dispatch sequencing to minimise perishable losses.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Farm-to-customer traceability</h4>
+              <p>Digital lot tracking across procurement, processing and distribution — ready for FSSAI compliance and export certification.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="btn-gold" style="font-size:0.85rem;padding:11px 22px;">Talk to our agri specialist <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></a>
+        </div>
+
+        <!-- IT -->
+        <div id="sec-it" class="sector-panel">
+          <span class="sp-tag">IT &amp; Services</span>
+          <h2 class="sp-title">Grow revenue without <em>growing headcount.</em></h2>
+          <div class="sp-img"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="IT Services"></div>
+          <p class="sp-desc">Resource utilisation, project delivery risk, pipeline forecasting and margin analytics for IT services firms, staffing businesses and professional services organisations growing beyond ₹5 Cr revenue.</p>
+          <div class="kpi-row">
+            <span class="kpi-pill">Billable utilisation</span>
+            <span class="kpi-pill">Project margin</span>
+            <span class="kpi-pill">Delivery risk score</span>
+            <span class="kpi-pill">Bench cost</span>
+            <span class="kpi-pill">Revenue per employee</span>
+            <span class="kpi-pill">Win rate</span>
+          </div>
+          <div class="sp-grid">
+            <div class="sp-card">
+              <h4>Resource optimisation</h4>
+              <p>Match talent supply to project demand in real time. Reduce bench, improve utilisation and plan hiring 60 days ahead.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Project health monitoring</h4>
+              <p>Early warning system for schedule slippage, budget overrun and scope creep — giving PMs time to course-correct.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Pipeline forecasting</h4>
+              <p>Model revenue scenarios from your sales pipeline with win-probability weighting and capacity constraint checks.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Bid analytics</h4>
+              <p>Win/loss analysis, pricing benchmarks and proposal ROI scoring to sharpen your competitive positioning.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="btn-gold" style="font-size:0.85rem;padding:11px 22px;">Talk to our IT services specialist <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></a>
+        </div>
+
+        <!-- PHARMA -->
+        <div id="sec-pharma" class="sector-panel">
+          <span class="sp-tag">Healthcare &amp; Pharma</span>
+          <h2 class="sp-title">Compliant supply chains. <em>Zero stockouts.</em></h2>
+          <div class="sp-img"><img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=900&q=80" alt="Pharma"></div>
+          <p class="sp-desc">Batch planning, compliance dashboards, expiry risk management and demand forecasting for pharmaceutical manufacturers, distributors and hospital procurement teams operating under Indian regulatory frameworks.</p>
+          <div class="kpi-row">
+            <span class="kpi-pill">Batch efficiency</span>
+            <span class="kpi-pill">Fill rate</span>
+            <span class="kpi-pill">Expiry write-off %</span>
+            <span class="kpi-pill">Compliance score</span>
+            <span class="kpi-pill">Distribution OTIF</span>
+            <span class="kpi-pill">Recall readiness</span>
+          </div>
+          <div class="sp-grid">
+            <div class="sp-card">
+              <h4>Batch planning optimisation</h4>
+              <p>Align batch sizes with demand forecasts, expiry windows and regulatory batch records to minimise waste and write-offs.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Compliance dashboards</h4>
+              <p>CDSCO and GMP-aligned quality KPIs with deviation tracking, CAPA status and audit-ready export reports.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Expiry risk management</h4>
+              <p>Proactive alerts on near-expiry inventory across distribution channels with recommended reallocation actions.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Demand sensing for regulated products</h4>
+              <p>Forecast at the SKU-channel level for hospital formularies, retail pharmacy and government tender cycles.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="btn-gold" style="font-size:0.85rem;padding:11px 22px;">Talk to our pharma specialist <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></a>
+        </div>
+
+        <!-- FMCG -->
+        <div id="sec-fmcg" class="sector-panel">
+          <span class="sp-tag">FMCG &amp; Distribution</span>
+          <h2 class="sp-title">Move fast. Never <em>out of stock.</em></h2>
+          <div class="sp-img"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="FMCG"></div>
+          <p class="sp-desc">Supply chain resilience, stock health scoring, distributor performance analytics and route optimisation for FMCG brands, distributors and super-stockists managing high-velocity SKU portfolios across Indian geographies.</p>
+          <div class="kpi-row">
+            <span class="kpi-pill">OTIF</span>
+            <span class="kpi-pill">Inventory turns</span>
+            <span class="kpi-pill">Distributor fill rate</span>
+            <span class="kpi-pill">Returns %</span>
+            <span class="kpi-pill">Route productivity</span>
+            <span class="kpi-pill">Scheme ROI</span>
+          </div>
+          <div class="sp-grid">
+            <div class="sp-card">
+              <h4>Distributor performance</h4>
+              <p>Score distributors on coverage, throughput and scheme compliance. Identify underperformers early and allocate resources accordingly.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Stock health scoring</h4>
+              <p>Real-time visibility into fast movers, slow movers and dead stock across the distribution network — with auto-reorder triggers.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Route optimisation</h4>
+              <p>Reduce last-mile delivery cost by 12–18% with demand-aware route planning that adapts to beat productivity and fuel costs.</p>
+            </div>
+            <div class="sp-card">
+              <h4>Scheme &amp; trade promotion ROI</h4>
+              <p>Measure true volume lift and margin impact of each trade scheme — and redirect spend to the schemes that actually move stock.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="btn-gold" style="font-size:0.85rem;padding:11px 22px;">Talk to our FMCG specialist <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></a>
+        </div>
+
+      </div><!-- end panel wrapper -->
+    </div><!-- end sector-layout -->
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- DELIVERY MODEL -->
+<section class="sec sec-dark">
+  <div class="W">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="eyebrow" style="justify-content:center;">Our delivery model</div>
+      <h2 class="sec-heading" style="margin-top:14px;">How we make sector analytics <em>stick.</em></h2>
+    </div>
+    <div class="delivery-grid">
+      <div class="del-card">
+        <div class="del-num">01</div>
+        <h3>Sector discovery sprint</h3>
+        <p>A structured 2-week exercise to map your data assets, business KPIs and the three highest-impact analytics use cases. Zero commitment to proceed.</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">02</div>
+        <h3>Rapid pilot deployment</h3>
+        <p>We deploy Anviksha's sector playbook on your live data and deliver first insights within 30 days. Early wins pay for the next phase.</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">03</div>
+        <h3>Adoption &amp; embedding</h3>
+        <p>Change management, training and workflow integration ensure your operations, finance and leadership teams actually use what we build.</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">04</div>
+        <h3>Outcome tracking</h3>
+        <p>We track and report the ₹ value delivered against the business case — cost savings, service improvement and revenue impact — every quarter.</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">05</div>
+        <h3>Continuous evolution</h3>
+        <p>Your analytics maturity grows with your business. SPARK introduces new use cases, refined models and expanded data sources as you scale.</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">06</div>
+        <h3>Local expert support</h3>
+        <p>A dedicated sector analyst and engagement lead — based in India, available during business hours, speaking your industry language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- CTA -->
+<section class="sec">
+  <div class="W">
+    <div class="cta-strip">
+      <div>
+        <h2>Not sure which sector package<br>fits your business? <em>Let's find out.</em></h2>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-top:10px;">One call with a SPARK sector expert — we'll map the right analytics path for your business in 45 minutes.</p>
+      </div>
+      <a href="contact.html" class="btn-gold" style="white-space:nowrap;">Book a discovery call <i class="fas fa-arrow-right" style="font-size:.75rem;"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="W">
+    <div class="footer-inner">
+      <div class="footer-brand"><span>SPARK</span>Consulting</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="anviksha.html">Anviksha</a><a href="sectors.html">Sectors</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 SPARK Decision Intelligence Consulting · Bengaluru, India</div>
+  </div>
+</footer>
+
+</div>
 <script>
-  function activateNavLinks() {
-    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav a[href]').forEach(function(link) {
-      var href = link.getAttribute('href');
-      if (href === currentPage || (href === 'index.html' && currentPage === '')) {
-        link.classList.remove('text-slate-300');
-        link.classList.add('bg-slate-900', 'text-white');
-      } else {
-        link.classList.remove('bg-slate-900', 'text-white');
-        link.classList.add('text-slate-300');
-      }
-    });
+  document.getElementById('burger').addEventListener('click',function(){document.getElementById('mobileNav').classList.toggle('open');});
+
+  function showSector(id, btn) {
+    document.querySelectorAll('.sector-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+    document.getElementById('sec-'+id).classList.add('active');
+    btn.classList.add('active');
   }
-  document.addEventListener('DOMContentLoaded', function() {
-    activateNavLinks();
-    var mobileMenuButton = document.getElementById('mobile-menu-button');
-    var mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', function() {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', String(!expanded));
-        mobileMenu.hidden = expanded;
-      });
-    }
-  });
+
+  (function(){const c=document.getElementById('bg-canvas'),x=c.getContext('2d');let W,H,n=[];const G='rgba(201,168,76,',B='rgba(59,95,192,';function r(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}function i(){n=[];const k=Math.min(Math.floor(W*H/20000),50);for(let j=0;j<k;j++)n.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.26,vy:(Math.random()-.5)*.26,r:Math.random()*1.7+0.5,g:Math.random()>.62});}function d(){x.clearRect(0,0,W,H);const m=155;for(let a=0;a<n.length;a++)for(let b=a+1;b<n.length;b++){const p=n[a],q=n[b],dx=p.x-q.x,dy=p.y-q.y,dt=Math.sqrt(dx*dx+dy*dy);if(dt<m){const al=(1-dt/m)*.21;x.strokeStyle=(p.g||q.g?G:B)+al+')';x.lineWidth=0.55;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke();}}n.forEach(p=>{x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=(p.g?G:B)+'0.68)';x.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;});requestAnimationFrame(d);}window.addEventListener('resize',()=>{r();i();});r();i();d();})();
 </script>
 </body>
 </html>
-
